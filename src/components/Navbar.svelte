@@ -20,7 +20,6 @@
   import Button from "sveltestrap/src/Button.svelte";
 
   export let color;
-  export let title;
 
   function searchHandle() {
     event.preventDefault();
@@ -28,7 +27,7 @@
 </script>
 
 <Navbar class="sb-topnav navbar-expand" {color} dark expand="md">
-  <NavbarBrand href=".">{title}</NavbarBrand>
+  <NavbarBrand href=".">Admin</NavbarBrand>
   <Nav class="ml-auto" navbar>
     <Form inline>
       <InputGroup>
@@ -53,9 +52,11 @@
           <DropdownItem>
             <a class="dropdown-item" href="settings">Settings</a>
           </DropdownItem>
+          <!--
           <DropdownItem>
             <a class="dropdown-item" href="activity_log">Activity Log</a>
           </DropdownItem>
+        -->
           <DropdownItem divider />
           <DropdownItem>
             <a class="dropdown-item" href="pages/authentication/login">

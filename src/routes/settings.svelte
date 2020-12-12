@@ -19,6 +19,37 @@
     <CardBody>
       <Form>
         <FormGroup>
+          <Label for="examplePassword" class="small mb-1">
+            Current Password*
+          </Label>
+          <Input
+            class="py-4"
+            type="password"
+            name="password"
+            id="currentPassword"
+            placeholder="Enter password" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword" class="small mb-1">New Password*</Label>
+          <Input
+            class="py-4"
+            type="password"
+            name="password"
+            id="newPassword"
+            placeholder="Enter password" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword" class="small mb-1">
+            Confirm Password*
+          </Label>
+          <Input
+            class="py-4"
+            type="password"
+            name="password"
+            id="retypePassword"
+            placeholder="Enter password" />
+        </FormGroup>
+        <!--<FormGroup>
           <Label for="name" class="small mb-1">First Name</Label>
           <Input
             class="py-4"
@@ -44,20 +75,12 @@
             placeholder="Enter email address" />
         </FormGroup>
         <FormGroup>
-          <Label for="examplePassword" class="small mb-1">Password</Label>
-          <Input
-            class="py-4"
-            type="password"
-            name="password"
-            id="examplePassword"
-            placeholder="Enter password" />
-        </FormGroup>
-        <FormGroup>
           <CustomInput
             type="checkbox"
             id="exampleCustomCheckbox"
             label="Remember password" />
         </FormGroup>
+      -->
         <FormGroup
           class="d-flex align-items-center justify-content-between mt-4 mb-0">
           <Button block color="primary" href=".">Save</Button>

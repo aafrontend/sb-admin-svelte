@@ -3,25 +3,38 @@
   import Chart from "chart.js";
 
   const chartData = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     datasets: [
       {
         label: "# of Votes",
-        data: [4, 6, 10, 12, 15, 19],
-        backgroundColor: "rgba(3,117,220)"
-      }
-    ]
+        data: [4, 6, 10, 12, 15, 19, 25, 14, 23, 33, 13, 23],
+        backgroundColor: "rgba(3,117,220)",
+      },
+    ],
   };
   const chartOptions = {
     scales: {
       yAxes: [
         {
           ticks: {
-            beginAtZero: true
-          }
-        }
-      ]
-    }
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
   };
 
   function createChart() {
@@ -29,7 +42,7 @@
     var myChart = new Chart(ctx, {
       type: "bar",
       data: chartData,
-      options: chartOptions
+      options: chartOptions,
     });
   }
 

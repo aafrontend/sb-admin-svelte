@@ -15,6 +15,12 @@
   import BarChart from "../components/Charts/BarChart.svelte";
 
   let title = "SB Admin Svelte";
+
+  // Test scripts:
+  let totalCategories = 21;
+  let totalSubCategories = 1;
+  let totalQuestions = 156;
+  let totalUsers = 170;
 </script>
 
 <svelte:head>
@@ -26,27 +32,40 @@
 </Breadcrumb>
 <Row>
   <div class="col-xl-3 col-md-6">
-    <DashboardCard cardTitle="Primary Card" cardColor="primary" />
+    <DashboardCard
+      cardTitle="Total Categories"
+      cardSubtitle={totalCategories}
+      cardColor="dark" />
   </div>
   <div class="col-xl-3 col-md-6">
-    <DashboardCard cardTitle="Warning Card" cardColor="warning" />
+    <DashboardCard
+      cardTitle="Total Sub-Categories"
+      cardSubtitle={totalSubCategories}
+      cardColor="dark" />
   </div>
   <div class="col-xl-3 col-md-6">
-    <DashboardCard cardTitle="Success Card" cardColor="success" />
+    <DashboardCard
+      cardTitle="Total Questions"
+      cardSubtitle={totalQuestions}
+      cardColor="dark" />
   </div>
   <div class="col-xl-3 col-md-6">
-    <DashboardCard cardTitle="Danger Card" cardColor="danger" />
+    <DashboardCard
+      cardTitle="Total Users"
+      cardSubtitle={totalUsers}
+      cardColor="dark" />
   </div>
 </Row>
 <Row>
   <div class="col-xl-6">
-    <CustomCard cardTitle="Area Chart Example" cardIcon="fas fa-chart-area">
-      <AreaChart />
+    <CustomCard cardTitle="Monthly Leaderboard" cardIcon="fas fa-chart-bar">
+      <BarChart />
     </CustomCard>
   </div>
+
   <div class="col-xl-6">
-    <CustomCard cardTitle="Bar Chart Example" cardIcon="fas fa-chart-bar">
-      <BarChart />
+    <CustomCard cardTitle="Monthly Registration" cardIcon="fas fa-chart-area">
+      <AreaChart />
     </CustomCard>
   </div>
 </Row>

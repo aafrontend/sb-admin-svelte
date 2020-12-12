@@ -19,9 +19,7 @@
 
 <h1 class="mt-4">Charts</h1>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Charts</BreadcrumbItem>
 </Breadcrumb>
 
@@ -38,10 +36,7 @@
 </Card>
 
 <Card class="mb-4">
-  <CardHeader>
-    <i class="fas fa-chart-area" />
-    {areaCardTitle}
-  </CardHeader>
+  <CardHeader><i class="fas fa-chart-area" /> {areaCardTitle}</CardHeader>
   <CardBody>
     <AreaChart />
   </CardBody>
@@ -51,22 +46,17 @@
 <Row>
   <div class="col-lg-6">
     <Card class="mb-4">
-      <CardHeader>
-        <i class="fas fa-chart-bar" />
-        {barCardTitle}
-      </CardHeader>
+      <CardHeader><i class="fas fa-chart-bar" /> {barCardTitle}</CardHeader>
       <CardBody>
         <BarChart />
       </CardBody>
       <CardFooter class="small text-muted">{cardFooterText}</CardFooter>
     </Card>
   </div>
+  <div class="col-lg-6" />
   <div class="col-lg-6">
     <Card class="mb-4">
-      <CardHeader>
-        <i class="fas fa-chart-pie" />
-        {pieCardTitle}
-      </CardHeader>
+      <CardHeader><i class="fas fa-chart-pie" /> {pieCardTitle}</CardHeader>
       <CardBody>
         <PieChart />
       </CardBody>
