@@ -14,7 +14,7 @@
 <div class="col-lg-8 mx-auto my-5">
   <Card class="shadow-lg border-0 rounded-lg mt-5">
     <CardHeader>
-      <h3 class="text-center font-weight-light my-4">Settings</h3>
+      <h3 class="text-center font-weight-light my-4">Change Password</h3>
     </CardHeader>
     <CardBody>
       <Form>
