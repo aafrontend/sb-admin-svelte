@@ -29,6 +29,7 @@
 <Navbar class="sb-topnav navbar-expand" {color} dark expand="md">
   <NavbarBrand href=".">Admin</NavbarBrand>
   <Nav class="ml-auto" navbar>
+    <!--
     <Form inline>
       <InputGroup>
         <Input
@@ -43,6 +44,7 @@
         </InputGroupAddon>
       </InputGroup>
     </Form>
+  -->
     <ListGroup class="ml-auto ml-md-0">
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
@@ -50,7 +52,7 @@
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>
-            <a class="dropdown-item" href="settings">Settings</a>
+            <a class="dropdown-item" href="changepassword">Change Password</a>
           </DropdownItem>
           <!--
           <DropdownItem>
