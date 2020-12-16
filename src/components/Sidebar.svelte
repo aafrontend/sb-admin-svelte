@@ -277,7 +277,7 @@
           text="Settings"
           leftIcon
           rightIcon>
-          <i class="fas fa-columns" slot="leftIcon" />
+          <i class="fas fa-cog" slot="leftIcon" />
           <i class="fas fa-angle-down" slot="rightIcon" />
         </SidebarItem>
         <Collapse isOpen={isSettingOpen}>
