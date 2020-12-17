@@ -3,25 +3,20 @@ const wait = delay => new Promise(resolve => setTimeout(resolve, delay))
 export const load = async () => {
 	await wait(500)
 	return [
-        ["1", "Mark", "Mark@gmail.com", "81818181", "Google", "Active", "20-Feb-2020", "Edit"],
-        ["2", "Jack", "Jjck@gmail.com", "81342181", "Google", "Active", "15-Feb-2020", "Edit"],
-        ["3", "Peter", "parkerpeter@gmail.com", "98465131", "Google", "Active", "17-Jan-2020", "Edit"],
-        ["4", "Ming", "xiaoming666@gmail.com", "85184586", "Google", "Active", "11-Jan-2020", "Edit"],
-        ["5", "Anders", "cdoanders@gmail.com", "89494851", "Google", "Active", "05-Jan-2020", "Edit"],
-        ["6", "Mark", "Mark@gmail.com", "81818181", "Google", "Active", "20-Feb-2020", "Edit"],
-        ["7", "Jack", "Jjck@gmail.com", "81342181", "Google", "Active", "15-Feb-2020", "Edit"],
-        ["8", "Peter", "parkerpeter@gmail.com", "98465131", "Google", "Active", "17-Jan-2020", "Edit"],
-        ["9", "Ming", "xiaoming666@gmail.com", "85184586", "Google", "Active", "11-Jan-2020", "Edit"],
-        ["10", "Anders", "cdoanders@gmail.com", "89494851", "Google", "Active", "05-Jan-2020", "Edit"],
-        ["11", "James", "Mark@gmail.com", "81818181", "Google", "Active", "20-Feb-2020", "Edit"],
-        ["12", "Jack", "Jjck@gmail.com", "81342181", "Google", "Active", "15-Feb-2020", "Edit"],
-        ["13", "Peter", "parkerpeter@gmail.com", "98465131", "Google", "Active", "17-Jan-2020", "Edit"],
-        ["14", "Ming", "xiaoming666@gmail.com", "85184586", "Google", "Active", "11-Jan-2020", "Edit"],
-        ["15", "Anders", "cdoanders@gmail.com", "89494851", "Google", "Active", "05-Jan-2020", "Edit"],
-        ["16", "Mark", "Mark@gmail.com", "81818181", "Google", "Active", "20-Feb-2020", "Edit"],
-        ["17", "Jack", "Jjck@gmail.com", "81342181", "Google", "Active", "15-Feb-2020", "Edit"],
-        ["18", "Peter", "parkerpeter@gmail.com", "98465131", "Google", "Active", "17-Jan-2020", "Edit"],
-        ["19", "Ming", "xiaoming666@gmail.com", "85184586", "Google", "Active", "11-Jan-2020", "Edit"],
-        ["20", "Anders", "cdoanders@gmail.com", "89494851", "Google", "Active", "05-Jan-2020", "Edit"],
+        {id: "1", name: "Mark",email: "Mark@gmail.com",mobile: "81818181",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "2", name: "Angel",email: "AGF@gmail.com",mobile: "83214153",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "3", name: "Zane",email: "zaney@gmail.com",mobile: "94657653",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "4", name: "Peter",email: "parketpete@gmail.com",mobile: "84567863",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "5", name: "Denzel",email: "chandz@gmail.com",mobile: "98034565",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "6", name: "Joey",email: "jojo@gmail.com",mobile: "81123565",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "7", name: "Zoe",email: "zoetay@gmail.com",mobile: "93454421",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "8", name: "Mark",email: "pokemark@gmail.com",mobile: "98887512",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "9", name: "Marcus",email: "marcissd@gmail.com",mobile: "93592641",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "10", name: "Ming",email: "xiaoming666@gmail.com",mobile: "82864987",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "11", name: "Halima",email: "yacoooob@gmail.com",mobile: "89136125",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "12", name: "Quinn",email: "clq@gmail.com",mobile: "83151625",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+        {id: "13", name: "Ben",email: "benlim@gmail.com",mobile: "98741564",type: "Google",status: "Active",date: "20-Feb-2020",action: "Edit"},
+
+        
 	]
 }

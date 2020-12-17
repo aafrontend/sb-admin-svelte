@@ -73,9 +73,14 @@
     {#await dataPromise then rows}
       {#each rows as row}
         <tr>
-          {#each row as cell}
-            <td>{cell}</td>
-          {/each}
+          <td>{row.id}</td>
+          <td>{row.name}</td>
+          <td>{row.email}</td>
+          <td>{row.mobile}</td>
+          <td>{row.type}</td>
+          <td>{row.status}</td>
+          <td>{row.date}</td>
+          <td>{row.action}</td>
         </tr>
       {/each}
     {/await}
