@@ -10,7 +10,7 @@
 
   import DashboardCard from "../components/DashboardCard.svelte";
   import CustomCard from "../components/CustomCard.svelte";
-  import Table from "../components/Table.svelte";
+  import Userstable from "../components/Userstable.svelte";
   import AreaChart from "../components/Charts/AreaChart.svelte";
   import BarChart from "../components/Charts/BarChart.svelte";
 
@@ -69,6 +69,6 @@
     </CustomCard>
   </div>
 </Row>
-<CustomCard cardTitle="DataTable Example" cardIcon="fas fa-table">
-  <Table />
+<CustomCard cardTitle="Registered Users" cardIcon="fas fa-table">
+  <Userstable />
 </CustomCard>
