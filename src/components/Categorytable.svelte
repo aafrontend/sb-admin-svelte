@@ -3,7 +3,7 @@
   import { Button } from "sveltestrap";
   import jQuery from "jquery";
   import { onMount, tick } from "svelte";
-  import { load } from "../userdata.js";
+  import { load } from "../categorydata.js";
 
   let el; // table element
   let table; // table object (API)
@@ -51,12 +51,8 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Mobile</th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Register Date</th>
+      <th>Category Name</th>
+      <th>Image</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -64,15 +60,13 @@
     {#await dataPromise then rows}
       {#each rows as row}
         <tr>
-          <td>{row.id}</td>
-          <td>{row.name}</td>
-          <td>{row.email}</td>
-          <td>{row.mobile}</td>
-          <td>{row.type}</td>
-          <td>{row.status}</td>
-          <td>{row.date}</td>
+          <td>{row.cid}</td>
+          <td>{row.categoryname}</td>
+          <td>{row.image}</td>
+
           <td>
             <Button {color}>{row.action}</Button>
+            <Button {color}>delete</Button>
           </td>
         </tr>
       {/each}

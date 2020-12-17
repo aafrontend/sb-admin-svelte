@@ -4,26 +4,45 @@
   import Card from "sveltestrap/src/Card.svelte";
   import CardBody from "sveltestrap/src/CardBody.svelte";
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
+  import Form from "sveltestrap/src/Form.svelte";
+  import FormGroup from "sveltestrap/src/FormGroup.svelte";
+  import Label from "sveltestrap/src/Label.svelte";
+  import Input from "sveltestrap/src/Input.svelte";
+  import Button from "sveltestrap/src/Button.svelte";
 
-  import Table from "../components/Table.svelte";
+  import Categorytable from "../components/Categorytable.svelte";
 </script>
 
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">Main Category</h1>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
-  <BreadcrumbItem active>Tables</BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+  <BreadcrumbItem active>Category</BreadcrumbItem>
 </Breadcrumb>
 
 <Card class="mb-4">
+  <CardHeader>Create Main Category</CardHeader>
   <CardBody>
-    DataTables is a third party plugin that is used to generate the demo table
-    below. For more information about DataTables, please visit the
-    <a target="_blank" href="https://datatables.net/">
-      official DataTables documentation
-    </a>
-    .
+    <Form>
+      <FormGroup>
+        <Label for="examplePassword" class="small mb-1">Category Name</Label>
+        <Input
+          class="py-4"
+          type="password"
+          name="password"
+          id="currentPassword"
+          placeholder="category name" />
+      </FormGroup>
+
+      <FormGroup>
+        <Label for="exampleFile" class="small mb-1">Image</Label>
+        <Input type="file" name="file" id="exampleFile" />
+      </FormGroup>
+
+      <FormGroup
+        class="d-flex align-items-center justify-content-between mt-4 mb-0">
+        <Button block color="primary" href=".">Add New</Button>
+      </FormGroup>
+    </Form>
   </CardBody>
 </Card>
 
@@ -49,6 +68,6 @@
     DataTable Example
   </CardHeader>
   <CardBody>
-    <Table />
+    <Categorytable />
   </CardBody>
 </Card>
