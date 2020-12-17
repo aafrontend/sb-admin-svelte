@@ -4,26 +4,81 @@
   import Card from "sveltestrap/src/Card.svelte";
   import CardBody from "sveltestrap/src/CardBody.svelte";
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
+  import Form from "sveltestrap/src/Form.svelte";
+  import FormGroup from "sveltestrap/src/FormGroup.svelte";
+  import Label from "sveltestrap/src/Label.svelte";
+  import Input from "sveltestrap/src/Input.svelte";
+  import Button from "sveltestrap/src/Button.svelte";
 
-  import Table from "../components/Table.svelte";
+  import Questiontable from "../components/Questiontable.svelte";
 </script>
 
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">Questions for Quiz</h1>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
-  <BreadcrumbItem active>Tables</BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+  <BreadcrumbItem active>Questions</BreadcrumbItem>
 </Breadcrumb>
 
 <Card class="mb-4">
+  <CardHeader>Create a Question</CardHeader>
   <CardBody>
-    DataTables is a third party plugin that is used to generate the demo table
-    below. For more information about DataTables, please visit the
-    <a target="_blank" href="https://datatables.net/">
-      official DataTables documentation
-    </a>
-    .
+    <FormGroup>
+      <Label for="exampleSelect" class="small mb-1">Category</Label>
+      <Input type="select" name="select" id="exampleSelect">
+        <option value="" selected disabled hidden>Choose a Category</option>
+        <option>Singapore Trivia</option>
+        <option>National Day Songs</option>
+        <option>Singapore History</option>
+        <option>Singlish</option>
+        <option>Tourist Attractions</option>
+      </Input>
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleText" class="small mb-1">Question</Label>
+      <Input type="textarea" name="text" id="exampleText" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleFile" class="small mb-1">Image</Label>
+      <Input type="file" name="file" id="exampleFile" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">A</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">B</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">C</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">D</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleSelect" class="small mb-1">Correct Answer</Label>
+      <Input type="select" name="select" id="exampleSelect">
+        <option value="" selected disabled hidden>Select Right Answer</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+      </Input>
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">Level</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
   </CardBody>
 </Card>
 
@@ -49,6 +104,6 @@
     DataTable Example
   </CardHeader>
   <CardBody>
-    <Table />
+    <Questiontable />
   </CardBody>
 </Card>
