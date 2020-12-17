@@ -19,17 +19,6 @@
 </Breadcrumb>
 
 <Card class="mb-4">
-  <CardBody>
-    DataTables is a third party plugin that is used to generate the demo table
-    below. For more information about DataTables, please visit the
-    <a target="_blank" href="https://datatables.net/">
-      official DataTables documentation
-    </a>
-    .
-  </CardBody>
-</Card>
-
-<Card class="mb-4">
   <CardHeader>
     <svg
       class="svg-inline--fa fa-table fa-w-16"

@@ -1,5 +1,6 @@
 <script>
   import Table from "sveltestrap/src/Table.svelte";
+  import { Button } from "sveltestrap";
   import jQuery from "jquery";
   import { onMount, tick } from "svelte";
   import { load } from "../userdata.js";
@@ -26,6 +27,8 @@
       userName: "@twitter",
     },
   ];
+
+  const color = "info";
 </script>
 
 <!--
@@ -80,7 +83,9 @@
           <td>{row.type}</td>
           <td>{row.status}</td>
           <td>{row.date}</td>
-          <td>{row.action}</td>
+          <td>
+            <Button {color}>{row.action}</Button>
+          </td>
         </tr>
       {/each}
     {/await}
