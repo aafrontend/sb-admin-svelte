@@ -5,15 +5,17 @@
   import CardBody from "sveltestrap/src/CardBody.svelte";
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
 
-  import Table from "../components/Table.svelte";
+  import Userstable from "../components/Userstable.svelte";
+  import jQuery from "jquery";
+  import initDt from "datatables.net-dt";
+
+  initDt();
 </script>
 
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">Users</h1>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
-  <BreadcrumbItem active>Tables</BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+  <BreadcrumbItem active>Users</BreadcrumbItem>
 </Breadcrumb>
 
 <Card class="mb-4">
@@ -46,9 +48,9 @@
         416H64v-96h160v96zm0-160H64v-96h160v96zm224
         160H288v-96h160v96zm0-160H288v-96h160v96z" />
     </svg>
-    DataTable Example
+    User Details
   </CardHeader>
   <CardBody>
-    <Table />
+    <Userstable />
   </CardBody>
 </Card>

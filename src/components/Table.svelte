@@ -3,9 +3,9 @@
 
   const tableHeading = ["#", "First Name", "Last-Name", "Username"];
   const tableData = [
-    { SNo: "1", firstName: "Mark", lastName: "Otto", userName: "@mdo" },
-    { SNo: "2", firstName: "Jacob", lastName: "Thornton", userName: "@fat" },
-    { SNo: "3", firstName: "Larry", lastName: "the Bird", userName: "@twitter" }
+    { ID: "1", firstName: "Mark", lastName: "Otto", userName: "@mdo" },
+    { ID: "2", firstName: "Jacob", lastName: "Thornton", userName: "@fat" },
+    { ID: "3", firstName: "Larry", lastName: "the Bird", userName: "@twitter" },
   ];
 </script>
 
@@ -18,7 +18,6 @@
     </tr>
   </thead>
   <tbody>
-
     {#each tableData as data}
       <tr>
         <th scope="row">{data.SNo}</th>
