@@ -15,6 +15,7 @@
     "browserslist": "^4.16.0",
     "caniuse-lite": "^1.0.30001168",
     "chart.js": "^2.9.3",
+    "cl-editor": "^2.1.1",
     "compression": "^1.7.1",
     "datatables.net-dt": "^1.10.22",
     "polka": "next",
