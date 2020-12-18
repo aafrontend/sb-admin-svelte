@@ -5,15 +5,13 @@
   import CardBody from "sveltestrap/src/CardBody.svelte";
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
 
-  import Table from "../components/Table.svelte";
+  import Reporttable from "../components/Reporttable.svelte";
 </script>
 
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">Questions Reported by Users</h1>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
-  <BreadcrumbItem active>Tables</BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+  <BreadcrumbItem active>Question Reports</BreadcrumbItem>
 </Breadcrumb>
 
 <Card class="mb-4">
@@ -46,9 +44,9 @@
         416H64v-96h160v96zm0-160H64v-96h160v96zm224
         160H288v-96h160v96zm0-160H288v-96h160v96z" />
     </svg>
-    DataTable Example
+    Reported Questions
   </CardHeader>
   <CardBody>
-    <Table />
+    <Reporttable />
   </CardBody>
 </Card>

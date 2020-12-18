@@ -3,7 +3,7 @@
   import { Button } from "sveltestrap";
   import jQuery from "jquery";
   import { onMount, tick } from "svelte";
-  import { load } from "../categorydata.js";
+  import { load } from "../questionreports.js";
 
   let el; // table element
   let table; // table object (API)
@@ -16,8 +16,7 @@
     });
   });
 
-  const cyancolor = ["info"];
-  const redcolor = ["danger"];
+  const color = "danger";
 </script>
 
 <!--
@@ -52,8 +51,9 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Category Name</th>
-      <th>Image</th>
+      <th>Question</th>
+      <th>Message</th>
+      <th>Date</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -61,17 +61,12 @@
     {#await dataPromise then rows}
       {#each rows as row}
         <tr>
-          <td>{row.cid}</td>
-          <td>{row.categoryname}</td>
-          <td>{row.image}</td>
-
+          <td>{row.qid}</td>
+          <td>{row.question}</td>
+          <td>{row.message}</td>
+          <td>{row.date}</td>
           <td>
-            {#each cyancolor as color}
-              <Button size="sm" {color}>{row.action}</Button>
-            {/each}
-            {#each redcolor as color}
-              <Button size="sm" {color}>delete</Button>
-            {/each}
+            <Button size="sm" {color}>{row.action}</Button>
           </td>
         </tr>
       {/each}

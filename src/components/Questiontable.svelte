@@ -16,7 +16,8 @@
     });
   });
 
-  const color = "info";
+  const cyancolor = ["info"];
+  const redcolor = ["danger"];
 </script>
 
 <svelte:head>
@@ -55,8 +56,12 @@
           <td>{row.level}</td>
 
           <td>
-            <Button {color}>{row.action}</Button>
-            <Button {color}>delete</Button>
+            {#each cyancolor as color}
+              <Button size="sm" {color}>{row.action}</Button>
+            {/each}
+            {#each redcolor as color}
+              <Button size="sm" {color}>delete</Button>
+            {/each}
           </td>
         </tr>
       {/each}
