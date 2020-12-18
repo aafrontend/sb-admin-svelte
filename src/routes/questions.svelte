@@ -15,7 +15,7 @@
   const yellowcolor = ["warning"];
 </script>
 
-<h1 class="mt-4">Questions for Quiz</h1>
+<h3 class="mt-4">Questions for Quiz</h3>
 <Breadcrumb class="mb-4">
   <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Questions</BreadcrumbItem>
@@ -83,7 +83,7 @@
     </FormGroup>
 
     <hr />
-    
+
     <Button block color="primary">Create New</Button>
   </CardBody>
 </Card>

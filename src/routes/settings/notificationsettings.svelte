@@ -11,12 +11,10 @@
   import Button from "sveltestrap/src/Button.svelte";
 </script>
 
-<h1 class="mt-4">Notification Settings</h1>
+<h3 class="mt-4">Notification Settings</h3>
 
 <Card class="mb-4">
-  <CardHeader>
-    Update FCM Server Key
-  </CardHeader>
+  <CardHeader>Update FCM Server Key</CardHeader>
   <CardBody>
     <FormGroup>
       <Label for="exampleText" class="small mb-1">FCM Server Key</Label>
@@ -24,9 +22,7 @@
     </FormGroup>
 
     <hr />
-    
+
     <Button block color="primary">Update FCM Server Key</Button>
   </CardBody>
 </Card>
-
-

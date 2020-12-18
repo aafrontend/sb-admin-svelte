@@ -26,7 +26,7 @@
 <svelte:head>
   <title>{title}</title>
 </svelte:head>
-<h1 class="mt-4">Dashboard</h1>
+<h3 class="mt-4">Dashboard</h3>
 <Breadcrumb class="mb-4">
   <BreadcrumbItem active>Dashboard</BreadcrumbItem>
 </Breadcrumb>

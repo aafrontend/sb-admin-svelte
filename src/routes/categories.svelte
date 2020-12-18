@@ -13,7 +13,7 @@
   import Categorytable from "../components/Categorytable.svelte";
 </script>
 
-<h1 class="mt-4">Main Category</h1>
+<h3 class="mt-4">Main Category</h3>
 <Breadcrumb class="mb-4">
   <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Category</BreadcrumbItem>

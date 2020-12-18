@@ -13,18 +13,14 @@
   import Admintable from "../components/Admintable.svelte";
 </script>
 
-<h1 class="mt-4">Admin Users</h1>
+<h3 class="mt-4">Admin Users</h3>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Admin Users and Rights</BreadcrumbItem>
 </Breadcrumb>
 
 <Card class="mb-4">
-  <CardHeader>
-  Create Admin Accounts
-  </CardHeader>
+  <CardHeader>Create Admin Accounts</CardHeader>
   <CardBody>
     <FormGroup>
       <Label for="exampleEmail" class="small mb-1">Username</Label>
@@ -33,8 +29,7 @@
 
     <FormGroup>
       <Label for="exampleEmail" class="small mb-1">Password</Label>
-      <Input type="password"
-      name="password" />
+      <Input type="password" name="password" />
     </FormGroup>
 
     <FormGroup>

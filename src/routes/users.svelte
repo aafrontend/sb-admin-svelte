@@ -12,7 +12,7 @@
   initDt();
 </script>
 
-<h1 class="mt-4">Users</h1>
+<h3 class="mt-4">Users</h3>
 <Breadcrumb class="mb-4">
   <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Users</BreadcrumbItem>

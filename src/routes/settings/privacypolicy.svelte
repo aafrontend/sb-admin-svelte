@@ -10,7 +10,7 @@
   import Button from "sveltestrap/src/Button.svelte";
 </script>
 
-<h1 class="mt-4">Privacy Policy</h1>
+<h3 class="mt-4">Privacy Policy</h3>
 
 <Card class="mb-4">
   <CardHeader>Update Privacy Policy for app usage</CardHeader>

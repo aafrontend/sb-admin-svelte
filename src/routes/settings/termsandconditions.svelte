@@ -12,7 +12,7 @@
   import Table from "../../components/Table.svelte";
 </script>
 
-<h1 class="mt-4">Terms and Conditions</h1>
+<h3 class="mt-4">Terms and Conditions</h3>
 
 <Card class="mb-4">
   <CardHeader>Update Terms and Condition</CardHeader>

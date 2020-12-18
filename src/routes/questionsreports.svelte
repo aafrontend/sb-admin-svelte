@@ -8,7 +8,7 @@
   import Reporttable from "../components/Reporttable.svelte";
 </script>
 
-<h1 class="mt-4">Questions Reported by Users</h1>
+<h3 class="mt-4">Questions Reported by Users</h3>
 <Breadcrumb class="mb-4">
   <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Question Reports</BreadcrumbItem>

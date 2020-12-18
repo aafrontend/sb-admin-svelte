@@ -17,7 +17,7 @@
   let isAttachedImage = false;
 </script>
 
-<h1 class="mt-4">Send Notifications to User</h1>
+<h3 class="mt-4">Send Notifications to User</h3>
 <Breadcrumb class="mb-4">
   <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
   <BreadcrumbItem active>Send Notifications</BreadcrumbItem>
@@ -60,8 +60,8 @@
       </Label>
     </FormGroup>
 
-    <Collapse isOpen = {isAttachedImage}>
-    <Input type="file" name="file" id="exampleFile" />
+    <Collapse isOpen={isAttachedImage}>
+      <Input type="file" name="file" id="exampleFile" />
     </Collapse>
 
     <hr />
