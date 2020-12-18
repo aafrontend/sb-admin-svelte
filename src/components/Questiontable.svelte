@@ -15,9 +15,6 @@
       table = jQuery(el).DataTable();
     });
   });
-
-  const cyancolor = ["info"];
-  const redcolor = ["danger"];
 </script>
 
 <svelte:head>
@@ -56,12 +53,8 @@
           <td>{row.level}</td>
 
           <td>
-            {#each cyancolor as color}
-              <Button size="sm" {color}>{row.action}</Button>
-            {/each}
-            {#each redcolor as color}
-              <Button size="sm" {color}>delete</Button>
-            {/each}
+            <Button size="sm" color="info">{row.action}</Button>
+            <Button size="sm" color="danger">delete</Button>
           </td>
         </tr>
       {/each}

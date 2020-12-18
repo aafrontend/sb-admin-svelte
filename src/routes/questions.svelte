@@ -11,6 +11,8 @@
   import Button from "sveltestrap/src/Button.svelte";
 
   import Questiontable from "../components/Questiontable.svelte";
+
+  const yellowcolor = ["warning"];
 </script>
 
 <h1 class="mt-4">Questions for Quiz</h1>
@@ -79,6 +81,10 @@
       <Label for="exampleEmail" class="small mb-1">Level</Label>
       <Input type="text" name="text" />
     </FormGroup>
+
+    <hr />
+    
+    <Button block color="primary">Create New</Button>
   </CardBody>
 </Card>
 

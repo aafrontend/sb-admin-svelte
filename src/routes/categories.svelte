@@ -38,6 +38,8 @@
         <Input type="file" name="file" id="exampleFile" />
       </FormGroup>
 
+      <hr />
+
       <FormGroup
         class="d-flex align-items-center justify-content-between mt-4 mb-0">
         <Button block color="primary" href=".">Add New</Button>

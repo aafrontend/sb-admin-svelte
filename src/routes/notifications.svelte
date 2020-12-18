@@ -4,26 +4,69 @@
   import Card from "sveltestrap/src/Card.svelte";
   import CardBody from "sveltestrap/src/CardBody.svelte";
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
+  import Form from "sveltestrap/src/Form.svelte";
+  import FormGroup from "sveltestrap/src/FormGroup.svelte";
+  import Label from "sveltestrap/src/Label.svelte";
+  import Input from "sveltestrap/src/Input.svelte";
+  import Button from "sveltestrap/src/Button.svelte";
+  import { Collapse } from "sveltestrap";
 
-  import Table from "../components/Table.svelte";
+  import Userstable from "../components/Userstable.svelte";
+
+  //input values
+  let isAttachedImage = false;
 </script>
 
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">Send Notifications to User</h1>
 <Breadcrumb class="mb-4">
-  <BreadcrumbItem>
-    <a href=".">Dashboard</a>
-  </BreadcrumbItem>
-  <BreadcrumbItem active>Tables</BreadcrumbItem>
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+  <BreadcrumbItem active>Send Notifications</BreadcrumbItem>
 </Breadcrumb>
 
 <Card class="mb-4">
   <CardBody>
-    DataTables is a third party plugin that is used to generate the demo table
-    below. For more information about DataTables, please visit the
-    <a target="_blank" href="https://datatables.net/">
-      official DataTables documentation
-    </a>
-    .
+    <FormGroup>
+      <Label for="exampleSelect" class="small mb-1">Select Users</Label>
+      <Input type="select" name="select" id="exampleSelect">
+        <option value="" selected disabled hidden>Select group to send</option>
+        <option>Selected only</option>
+        <option>All</option>
+      </Input>
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleSelect" class="small mb-1">Type</Label>
+      <Input type="select" name="select" id="exampleSelect">
+        <option value="" selected disabled hidden>Select type</option>
+        <option>Default</option>
+        <option>Main Category</option>
+      </Input>
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">Title</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
+
+    <FormGroup>
+      <Label for="exampleText" class="small mb-1">Message</Label>
+      <Input type="textarea" name="text" id="exampleText" />
+    </FormGroup>
+
+    <FormGroup check>
+      <Label check>
+        <Input type="checkbox" bind:checked={isAttachedImage} />
+        Include Image
+      </Label>
+    </FormGroup>
+
+    <Collapse isOpen = {isAttachedImage}>
+    <Input type="file" name="file" id="exampleFile" />
+    </Collapse>
+
+    <hr />
+
+    <Button block color="primary">Send Notification</Button>
   </CardBody>
 </Card>
 
@@ -46,9 +89,9 @@
         416H64v-96h160v96zm0-160H64v-96h160v96zm224
         160H288v-96h160v96zm0-160H288v-96h160v96z" />
     </svg>
-    DataTable Example
+    Users
   </CardHeader>
   <CardBody>
-    <Table />
+    <Userstable />
   </CardBody>
 </Card>

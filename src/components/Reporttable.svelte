@@ -15,31 +15,7 @@
       table = jQuery(el).DataTable();
     });
   });
-
-  const color = "danger";
 </script>
-
-<!--
-<Table bordered responsive>
-  <thead>
-    <tr>
-      {#each tableHeading as heading}
-        <th>{heading}</th>
-      {/each}
-    </tr>
-  </thead>
-  <tbody>
-    {#each tableData as data}
-      <tr>
-        <th scope="row">{data.SNo}</th>
-        <td>{data.firstName}</td>
-        <td>{data.lastName}</td>
-        <td>{data.userName}</td>
-      </tr>
-    {/each}
-  </tbody>
-</Table>
--->
 
 <svelte:head>
   <link
@@ -66,7 +42,7 @@
           <td>{row.message}</td>
           <td>{row.date}</td>
           <td>
-            <Button size="sm" {color}>{row.action}</Button>
+            <Button size="sm" color="danger">{row.action}</Button>
           </td>
         </tr>
       {/each}
