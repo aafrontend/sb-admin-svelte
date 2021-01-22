@@ -1,5 +1,7 @@
-const wait = delay => new Promise(resolve => setTimeout(resolve, delay))
+//const wait = delay => new Promise(resolve => setTimeout(resolve, delay))
 
+let users = [];
+/*
 export const load = async () => {
 	await wait(500)
 	return [
@@ -19,4 +21,20 @@ export const load = async () => {
 
         
 	]
+}
+*/
+
+export const load = async () => {
+        return new Promise((resolve, reject) => {
+                fetch(`http://localhost:5000/api/user/users`, {
+                method: "GET",
+        })
+        .then((resp) => resp.json())
+        .then((data) => users = data)
+        .then(() => {console.log(users); resolve(users)})
+        .catch((e) => {console.log(e.message); reject(e)});
+        }
+        
+        )
+	
 }

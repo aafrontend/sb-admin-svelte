@@ -7,10 +7,9 @@
 
   let el; // table element
   let table; // table object (API)
-
   const dataPromise = load();
-
   onMount(() => {
+    console.log(dataPromise);
     dataPromise.then(tick).then(() => {
       table = jQuery(el).DataTable();
     });
@@ -20,7 +19,8 @@
 <svelte:head>
   <link
     rel="stylesheet"
-    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+  />
 </svelte:head>
 
 <table bind:this={el} class="display" style="width:100%">
@@ -40,15 +40,15 @@
     {#await dataPromise then rows}
       {#each rows as row}
         <tr>
-          <td>{row.id}</td>
-          <td>{row.name}</td>
-          <td>{row.email}</td>
-          <td>{row.mobile}</td>
-          <td>{row.type}</td>
+          <td>{row.user_id}</td>
+          <td>{row.user_name}</td>
+          <td>{row.user_email}</td>
+          <td>{row.user_mobile}</td>
+          <td>{row.user_accounttype}</td>
           <td>{row.status}</td>
-          <td>{row.date}</td>
+          <td>{row.user_registerdate}</td>
           <td>
-            <Button size="sm" color="info">{row.action}</Button>
+            <Button size="sm" color="info">Edit</Button>
           </td>
         </tr>
       {/each}
