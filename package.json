@@ -18,6 +18,7 @@
     "cl-editor": "^2.1.1",
     "compression": "^1.7.1",
     "datatables.net-dt": "^1.10.22",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^0.4.0",
     "sveltestrap": "^3.3.2"

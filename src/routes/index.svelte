@@ -13,14 +13,36 @@
   import Userstable from "../components/Userstable.svelte";
   import AreaChart from "../components/Charts/AreaChart.svelte";
   import BarChart from "../components/Charts/BarChart.svelte";
+  import { onMount } from "svelte";
 
   let title = "SB Admin Svelte";
 
   // Test scripts:
-  let totalCategories = 21;
-  let totalSubCategories = 1;
-  let totalQuestions = 156;
-  let totalUsers = 170;
+  let totalCategories;
+  let totalSubCategories;
+  let totalQuestions;
+  let totalUsers;
+
+  // load data
+  onMount(() => {
+    fetch(`http://localhost:5000/api/user/users`, {
+      method: "GET",
+    })
+      .then((resp) => resp.json())
+      .then((data) => (totalUsers = data.length));
+
+    fetch(`http://localhost:5000/api/quiz/categories`, {
+      method: "GET",
+    })
+      .then((resp) => resp.json())
+      .then((data) => (totalCategories = data.length));
+
+    fetch(`http://localhost:5000/api/quiz/questions`, {
+      method: "GET",
+    })
+      .then((resp) => resp.json())
+      .then((data) => (totalQuestions = data.length));
+  });
 </script>
 
 <svelte:head>
@@ -35,25 +57,29 @@
     <DashboardCard
       cardTitle="Total Categories"
       cardSubtitle={totalCategories}
-      cardColor="dark" />
+      cardColor="dark"
+    />
   </div>
   <div class="col-xl-3 col-md-6">
     <DashboardCard
       cardTitle="Total Sub-Categories"
       cardSubtitle={totalSubCategories}
-      cardColor="dark" />
+      cardColor="dark"
+    />
   </div>
   <div class="col-xl-3 col-md-6">
     <DashboardCard
       cardTitle="Total Questions"
       cardSubtitle={totalQuestions}
-      cardColor="dark" />
+      cardColor="dark"
+    />
   </div>
   <div class="col-xl-3 col-md-6">
     <DashboardCard
       cardTitle="Total Users"
       cardSubtitle={totalUsers}
-      cardColor="dark" />
+      cardColor="dark"
+    />
   </div>
 </Row>
 <Row>

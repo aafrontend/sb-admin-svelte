@@ -7,7 +7,9 @@
 
   let el; // table element
   let table; // table object (API)
-  const dataPromise = load();
+  const dataPromise = load().catch((e) => {
+    console.error(e);
+  });
   onMount(() => {
     console.log(dataPromise);
     dataPromise.then(tick).then(() => {
