@@ -8,9 +8,11 @@
   let el; // table element
   let table; // table object (API)
 
-  const dataPromise = load();
-
+  const dataPromise = load().catch((e) => {
+    console.error(e);
+  });
   onMount(() => {
+    console.log(dataPromise);
     dataPromise.then(tick).then(() => {
       table = jQuery(el).DataTable();
     });
@@ -20,7 +22,8 @@
 <svelte:head>
   <link
     rel="stylesheet"
-    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+  />
 </svelte:head>
 
 <table bind:this={el} class="display" style="width:100%">
@@ -36,12 +39,12 @@
     {#await dataPromise then rows}
       {#each rows as row}
         <tr>
-          <td>{row.cid}</td>
-          <td>{row.categoryname}</td>
-          <td>{row.image}</td>
+          <td>{row.c_id}</td>
+          <td>{row.category}</td>
+          <td>IMAGE</td>
 
           <td>
-            <Button size="sm" color="info">{row.action}</Button>
+            <Button size="sm" color="info">edit</Button>
             <Button size="sm" color="danger">delete</Button>
           </td>
         </tr>

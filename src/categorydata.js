@@ -1,8 +1,16 @@
-const wait = delay => new Promise(resolve => setTimeout(resolve, delay))
+let categories = [];
 
 export const load = async () => {
-	await wait(500)
-	return [
-        {cid: "1", categoryname: "Singapore History", image: "[IMAGE]", action: "edit"},
-	]
+	return new Promise((resolve, reject) => {
+			fetch(`http://localhost:5000/api/quiz/categories`, {
+			method: "GET",
+	})
+	.then((resp) => resp.json())
+	.then((data) => categories = data)
+	.then(() => {console.log(categories); resolve(categories)})
+	.catch((e) => {console.log(e.message); reject(e)});
+	}
+	
+	)
+
 }
