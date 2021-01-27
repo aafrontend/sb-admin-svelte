@@ -8,9 +8,11 @@
   let el; // table element
   let table; // table object (API)
 
-  const dataPromise = load();
-
+  const dataPromise = load().catch((e) => {
+    console.error(e);
+  });
   onMount(() => {
+    console.log(dataPromise);
     dataPromise.then(tick).then(() => {
       table = jQuery(el).DataTable();
     });
@@ -20,7 +22,8 @@
 <svelte:head>
   <link
     rel="stylesheet"
-    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+  />
 </svelte:head>
 
 <table bind:this={el} class="display" style="width:100%">
@@ -35,25 +38,25 @@
       <th>Option D</th>
       <th>Answer</th>
       <th>Level</th>
-      <th>Action</th>
+      <th style="width:110px">Action</th>
     </tr>
   </thead>
   <tbody>
     {#await dataPromise then rows}
       {#each rows as row}
         <tr>
-          <td>{row.qid}</td>
-          <td>{row.image}</td>
+          <td>{row.q_id}</td>
+          <td>[IMAGE]]</td>
           <td>{row.question}</td>
-          <td>{row.opt_a}</td>
-          <td>{row.opt_b}</td>
-          <td>{row.opt_c}</td>
-          <td>{row.opt_d}</td>
+          <td>{row.option_a}</td>
+          <td>{row.option_b}</td>
+          <td>{row.option_c}</td>
+          <td>{row.option_d}</td>
           <td>{row.answer}</td>
-          <td>{row.level}</td>
+          <td>{row.difficulty}</td>
 
           <td>
-            <Button size="sm" color="info">{row.action}</Button>
+            <Button size="sm" color="info">edit</Button>
             <Button size="sm" color="danger">delete</Button>
           </td>
         </tr>
