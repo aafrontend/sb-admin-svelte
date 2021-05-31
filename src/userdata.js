@@ -26,7 +26,7 @@ export const load = async () => {
 
 export const load = async () => {
         return new Promise((resolve, reject) => {
-                fetch(`http://localhost:5000/api/user/users`, {
+                fetch(`http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/user/users`, {
                 method: "GET",
         })
         .then((resp) => resp.json())

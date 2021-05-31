@@ -2,7 +2,7 @@ let questions = [];
 
 export const load = async () => {
 	return new Promise((resolve, reject) => {
-			fetch(`http://localhost:5000/api/quiz/questions`, {
+			fetch(`http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/questions`, {
 			method: "GET",
 	})
 	.then((resp) => resp.json())

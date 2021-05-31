@@ -30,7 +30,6 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Image</th>
       <th>Question</th>
       <th>Option A</th>
       <th>Option B</th>
@@ -46,7 +45,6 @@
       {#each rows as row}
         <tr>
           <td>{row.q_id}</td>
-          <td>[IMAGE]]</td>
           <td>{row.question}</td>
           <td>{row.option_a}</td>
           <td>{row.option_b}</td>

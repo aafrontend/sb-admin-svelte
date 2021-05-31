@@ -19,27 +19,36 @@
 
   // Test scripts:
   let totalCategories;
-  let totalSubCategories;
+  //let totalSubCategories;
   let totalQuestions;
   let totalUsers;
 
   // load data
   onMount(() => {
-    fetch(`http://localhost:5000/api/user/users`, {
-      method: "GET",
-    })
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/user/users`,
+      {
+        method: "GET",
+      }
+    )
       .then((resp) => resp.json())
       .then((data) => (totalUsers = data.length));
 
-    fetch(`http://localhost:5000/api/quiz/categories`, {
-      method: "GET",
-    })
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/categories`,
+      {
+        method: "GET",
+      }
+    )
       .then((resp) => resp.json())
       .then((data) => (totalCategories = data.length));
 
-    fetch(`http://localhost:5000/api/quiz/questions`, {
-      method: "GET",
-    })
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/questions`,
+      {
+        method: "GET",
+      }
+    )
       .then((resp) => resp.json())
       .then((data) => (totalQuestions = data.length));
   });
@@ -60,13 +69,7 @@
       cardColor="dark"
     />
   </div>
-  <div class="col-xl-3 col-md-6">
-    <DashboardCard
-      cardTitle="Total Sub-Categories"
-      cardSubtitle={totalSubCategories}
-      cardColor="dark"
-    />
-  </div>
+
   <div class="col-xl-3 col-md-6">
     <DashboardCard
       cardTitle="Total Questions"
@@ -82,6 +85,8 @@
     />
   </div>
 </Row>
+
+<!--
 <Row>
   <div class="col-xl-6">
     <CustomCard cardTitle="Monthly Leaderboard" cardIcon="fas fa-chart-bar">
@@ -95,6 +100,7 @@
     </CustomCard>
   </div>
 </Row>
+-->
 <CustomCard cardTitle="Registered Users" cardIcon="fas fa-table">
   <Userstable />
 </CustomCard>

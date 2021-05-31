@@ -33,7 +33,6 @@
       <th>Email</th>
       <th>Mobile</th>
       <th>Type</th>
-      <th>Status</th>
       <th>Register Date</th>
       <th>Action</th>
     </tr>
@@ -47,7 +46,6 @@
           <td>{row.user_email}</td>
           <td>{row.user_mobile}</td>
           <td>{row.user_accounttype}</td>
-          <td>{row.status}</td>
           <td>{row.user_registerdate}</td>
           <td>
             <Button size="sm" color="info">Edit</Button>
