@@ -173,7 +173,7 @@
     fetch(`http://localhost:5000/api/quiz/questions/${id}`, {
       method: "DELETE",
     }).then((resp) => resp.json());
-    alert("Changes saved successfully!");
+    alert("Question deleted successfully!");
     toggleDel();
   }
 </script>
@@ -233,7 +233,6 @@
 
 <Modal isOpen={open} {toggle} {size}>
   <ModalHeader {toggle}>Edit Question</ModalHeader>
-  &nbsp;
   <ModalBody>
     <Form>
       <Label for="exampleSelect" class="small mb-1">Category</Label>
@@ -330,7 +329,6 @@
 
 <Modal isOpen={openDel} {toggle} {size}>
   <ModalHeader {toggle}>Delete Question</ModalHeader>
-  &nbsp;
   <ModalBody>
     <Form>
       <FormGroup>

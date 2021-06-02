@@ -54,7 +54,7 @@
         "Content-Type": "application/json",
       },
     }).then((resp) => resp.json());
-    alert("Changes saved successfully!");
+    alert("Report deleted successfully!");
     toggle();
   }
 </script>
@@ -95,7 +95,6 @@
 
 <Modal isOpen={open} {toggle} {size}>
   <ModalHeader {toggle}>Delete Feedback</ModalHeader>
-  &nbsp;
   <ModalBody>
     <Form>
       <FormGroup>
@@ -114,7 +113,7 @@
         <Label for="examplePassword" class="small mb-1">Message</Label>
         <Input
           class="py-4"
-          type="text"
+          type="textarea"
           name="text"
           id="feedback"
           placeholder="Message"
@@ -127,7 +126,7 @@
         <Label for="examplePassword" class="small mb-1">Date</Label>
         <Input
           class="py-4"
-          type="textarea"
+          type="text"
           name="text"
           id="description"
           placeholder="receiveDate"
@@ -139,7 +138,7 @@
   </ModalBody>
   <ModalFooter>
     <Button block color="primary" size="sm" on:click={() => deleteFeedback()}
-      >Confirm Changes</Button
+      >Delete Report</Button
     >
   </ModalFooter>
 </Modal>

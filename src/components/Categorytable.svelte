@@ -155,7 +155,6 @@
 
 <Modal isOpen={open} {toggle} {size}>
   <ModalHeader {toggle}>Edit Category</ModalHeader>
-  &nbsp;
   <ModalBody>
     <Form>
       <FormGroup>
@@ -207,7 +206,6 @@
 
 <Modal isOpen={openDel} {toggle} {size}>
   <ModalHeader {toggle}>Delete Category</ModalHeader>
-  &nbsp;
   <ModalBody>
     <Form>
       <FormGroup>
