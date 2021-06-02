@@ -1,9 +1,16 @@
-const wait = delay => new Promise(resolve => setTimeout(resolve, delay))
+let feedback = [];
 
 export const load = async () => {
-	await wait(500)
-	return [
-        {qid: "1", question:"Where is Singapore located?",message: "typo in the options",date: "2020-12-16 00:00:00",action: "delete"},
-        
-	]
+	return new Promise((resolve, reject) => {
+			fetch(`http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/feedback/all`, {
+			method: "GET",
+	})
+	.then((resp) => resp.json())
+	.then((data) => feedback = data)
+	.then(() => {console.log(feedback); resolve(feedback)})
+	.catch((e) => {console.log(e.message); reject(e)});
+	}
+	
+	)
+
 }
