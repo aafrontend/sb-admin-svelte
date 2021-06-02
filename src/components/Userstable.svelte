@@ -31,6 +31,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
+      <th>Notification</th>
       <th>Mobile</th>
       <th>Type</th>
       <th>Register Date</th>
@@ -44,6 +45,11 @@
           <td>{row.user_id}</td>
           <td>{row.user_name}</td>
           <td>{row.user_email}</td>
+          {#if row.user_notification == 1}
+            <td>Yes</td>
+          {:else}
+            <td>No</td>
+          {/if}
           <td>{row.user_mobile}</td>
           <td>{row.user_accounttype}</td>
           <td>{row.user_registerdate}</td>
