@@ -4,7 +4,10 @@
   import jQuery from "jquery";
   import { onMount, tick } from "svelte";
   import { load } from "../categorydata.js";
-  import Modal from "../components/Modal.svelte";
+  import Modal from "sveltestrap/src/Modal.svelte";
+  import ModalBody from "sveltestrap/src/ModalBody.svelte";
+  import ModalFooter from "sveltestrap/src/ModalFooter.svelte";
+  import ModalHeader from "sveltestrap/src/ModalHeader.svelte";
   import Form from "sveltestrap/src/Form.svelte";
   import FormGroup from "sveltestrap/src/FormGroup.svelte";
   import Label from "sveltestrap/src/Label.svelte";
@@ -36,19 +39,41 @@
     });
   }
 
+  let open = false;
+  let openDel = false;
+  let size;
+  const toggle = () => {
+    size = "lg";
+    if (!open && !openDel) {
+      open = !open;
+    } else if (open && !openDel) {
+      open = !open;
+    } else if (!open && openDel) {
+      openDel = !openDel;
+    } else {
+      // do nothing
+    }
+  };
+  const toggleDel = () => {
+    size = "lg";
+    openDel = !openDel;
+  };
+
   function clickHandler(row) {
     category = row.category;
-    modal.show();
+    pictureurl = row.pictureurl;
+    description = row.description;
+    toggle();
   }
 
   function delClickHandler(row) {
     category = row.category;
     pictureurl = row.pictureurl;
     description = row.description;
-    deleteModal.show();
+    toggleDel();
   }
 
-  function editCategory(modal) {
+  function editCategory() {
     let data = {
       category: category,
       pictureurl: pictureurl,
@@ -66,11 +91,11 @@
         },
       }).then((resp) => resp.json());
       alert("Changes saved successfully!");
-      modal.hide();
+      toggle();
     }
   }
 
-  function deleteCategory(modal) {
+  function deleteCategory() {
     let data = {
       category: category,
     };
@@ -83,7 +108,7 @@
       },
     }).then((resp) => resp.json());
     alert("Category deleted successfully!");
-    modal.hide();
+    toggleDel();
   }
 </script>
 
@@ -128,101 +153,109 @@
   </tbody>
 </table>
 
-<Modal bind:this={modal}>
-  <h3>Edit Category</h3>
+<Modal isOpen={open} {toggle} {size}>
+  <ModalHeader {toggle}>Edit Category</ModalHeader>
   &nbsp;
-  <Form>
-    <FormGroup>
-      <Label for="exampleCategoryName" class="small mb-1">Category Name</Label>
-      <Input
-        class="py-4"
-        type="text"
-        disabled
-        name="text"
-        id="categoryName"
-        placeholder={category}
-      />
-    </FormGroup>
+  <ModalBody>
+    <Form>
+      <FormGroup>
+        <Label for="exampleCategoryName" class="small mb-1">Category Name</Label
+        >
+        <Input
+          class="py-4"
+          type="text"
+          disabled
+          name="text"
+          id="categoryName"
+          placeholder={category}
+        />
+      </FormGroup>
 
-    <FormGroup>
-      <Label for="examplePassword" class="small mb-1"
-        >Google-Drive Image Url</Label
-      >
-      <Input
-        class="py-4"
-        type="text"
-        name="text"
-        id="categoryPictureUrl"
-        placeholder="Image Url"
-        bind:value={pictureurl}
-      />
-    </FormGroup>
+      <FormGroup>
+        <Label for="examplePassword" class="small mb-1"
+          >Google-Drive Image Url</Label
+        >
+        <Input
+          class="py-4"
+          type="text"
+          name="text"
+          id="categoryPictureUrl"
+          placeholder="Image Url"
+          bind:value={pictureurl}
+        />
+      </FormGroup>
 
-    <FormGroup>
-      <Label for="examplePassword" class="small mb-1">Description</Label>
-      <Input
-        class="py-4"
-        type="textarea"
-        name="text"
-        id="description"
-        placeholder="Image Url"
-        bind:value={description}
-      />
-    </FormGroup>
-
+      <FormGroup>
+        <Label for="examplePassword" class="small mb-1">Description</Label>
+        <Input
+          class="py-4"
+          type="textarea"
+          name="text"
+          id="description"
+          placeholder="Image Url"
+          bind:value={description}
+        />
+      </FormGroup>
+    </Form>
+  </ModalBody>
+  <ModalFooter>
     <Button block color="primary" size="sm" on:click={() => editCategory(modal)}
       >Confirm Changes</Button
     >
-  </Form>
+  </ModalFooter>
 </Modal>
 
-<Modal bind:this={deleteModal}>
-  <h3>Delete Category</h3>
+<Modal isOpen={openDel} {toggle} {size}>
+  <ModalHeader {toggle}>Delete Category</ModalHeader>
   &nbsp;
-  <Form>
-    <FormGroup>
-      <Label for="exampleCategoryName" class="small mb-1">Category Name</Label>
-      <Input
-        class="py-4"
-        type="text"
-        disabled
-        name="text"
-        id="categoryName"
-        placeholder={category}
-      />
-    </FormGroup>
+  <ModalBody>
+    <Form>
+      <FormGroup>
+        <Label for="exampleCategoryName" class="small mb-1">Category Name</Label
+        >
+        <Input
+          class="py-4"
+          type="text"
+          disabled
+          name="text"
+          id="categoryName"
+          placeholder={category}
+        />
+      </FormGroup>
 
-    <FormGroup>
-      <Label for="examplePassword" class="small mb-1"
-        >Google-Drive Image Url</Label
-      >
-      <Input
-        class="py-4"
-        type="text"
-        name="text"
-        disabled
-        id="categoryPictureUrl"
-        placeholder={pictureurl}
-      />
-    </FormGroup>
+      <FormGroup>
+        <Label for="examplePassword" class="small mb-1"
+          >Google-Drive Image Url</Label
+        >
+        <Input
+          class="py-4"
+          type="text"
+          name="text"
+          disabled
+          id="categoryPictureUrl"
+          placeholder={pictureurl}
+        />
+      </FormGroup>
 
-    <FormGroup>
-      <Label for="examplePassword" class="small mb-1">Description</Label>
-      <Input
-        class="py-4"
-        type="textarea"
-        name="text"
-        disabled
-        id="description"
-        placeholder={description}
-      />
-    </FormGroup>
-
+      <FormGroup>
+        <Label for="examplePassword" class="small mb-1">Description</Label>
+        <Input
+          class="py-4"
+          type="textarea"
+          name="text"
+          disabled
+          id="description"
+          placeholder={description}
+        />
+      </FormGroup>
+    </Form>
+  </ModalBody>
+  <ModalFooter>
     <Button
       block
       color="primary"
       size="sm"
       on:click={() => deleteCategory(modal)}>Confirm Delete</Button
     >
-  </Form>
+  </ModalFooter>
 </Modal>
