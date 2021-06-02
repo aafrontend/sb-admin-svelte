@@ -73,7 +73,7 @@
           "Content-Type": "application/json",
         },
       });
-      alert("Category added!");
+      alert("Question added!");
     }
   }
 </script>

@@ -13,24 +13,46 @@
 
   let categoryInput = "";
   let pictureurl = "";
+  let descriptionInput = "";
 
   async function newCategory() {
-    let data = {
+    let data1 = {
       category: categoryInput,
       pictureurl: pictureurl,
     };
-    console.log(JSON.stringify(data));
-    if (categoryInput == "" || pictureurl == "") {
+    console.log(JSON.stringify(data1));
+    if (categoryInput == "" || pictureurl == "" || descriptionInput == "") {
       alert("Please fill in the fields");
     } else {
-      fetch(`http://localhost:5000/api/quiz/categories`, {
+      await fetch(`http://localhost:5000/api/quiz/categories`, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(data1),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      alert("Question added!");
+    }
+  }
+
+  async function newCategory2() {
+    let data2 = {
+      category: categoryInput,
+      pictureurl: pictureurl,
+      description: descriptionInput,
+    };
+    const result = await newCategory();
+    console.log(JSON.stringify(data2));
+    if (categoryInput == "" || pictureurl == "" || descriptionInput == "") {
+      alert("Please fill in the fields");
+    } else {
+      await fetch(`http://localhost:5000/api/quiz/categories`, {
+        method: "PUT",
+        body: JSON.stringify(data2),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      alert("Category added!");
     }
   }
 </script>
@@ -70,12 +92,24 @@
       />
     </FormGroup>
 
+    <FormGroup>
+      <Label for="examplePassword" class="small mb-1">description</Label>
+      <Input
+        class="py-4"
+        type="textarea"
+        name="text"
+        id="categoryDescription"
+        placeholder="Description"
+        bind:value={descriptionInput}
+      />
+    </FormGroup>
+
     <hr />
 
     <FormGroup
       class="d-flex align-items-center justify-content-between mt-4 mb-0"
     >
-      <Button block color="primary" on:click={newCategory}>Add New</Button>
+      <Button block color="primary" on:click={newCategory2}>Add New</Button>
     </FormGroup>
   </CardBody>
 </Card>
