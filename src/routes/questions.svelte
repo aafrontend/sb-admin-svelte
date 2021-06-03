@@ -14,6 +14,7 @@
   import { onMount } from "svelte";
 
   let categories = [];
+  var csv;
 
   onMount(() => {
     fetch(
@@ -156,6 +157,28 @@
     <Button block color="primary" on:click={newQuestion}>Create New</Button>
   </CardBody>
 </Card>
+
+<!--
+
+<Card class="mb-4">
+  <CardHeader>Upload a CSV</CardHeader>
+  <CardBody>
+    <FormGroup>
+      <Label for="exampleFile">CSV File</Label>
+      <Input
+        type="file"
+        name="file"
+        id="exampleFile"
+        accept=".csv"
+        bind:files={csv}
+      />
+    </FormGroup>
+    <hr />
+    <Button block color="warning">Upload</Button>
+  </CardBody>
+</Card>
+
+-->
 
 <Card class="mb-4">
   <CardHeader>
