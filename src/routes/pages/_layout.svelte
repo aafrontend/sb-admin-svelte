@@ -7,7 +7,7 @@
   export let segment;
 </script>
 
-{#if segment === 'authentication'}
+{#if segment === "authentication"}
   <div id="layoutAuthentication" class="bg-primary">
     <div id="layoutAuthentication_content">
       <main>

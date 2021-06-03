@@ -9,12 +9,11 @@
   import Table from "sveltestrap/src/Table.svelte";
   import Row from "sveltestrap/src/Row.svelte";
 
-  import Image from "../components/Image.svelte";
-
   export let cardTitle = "";
   export let cardColor;
   export let cardFooterText = "View Details";
   export let cardSubtitle = "";
+  export let path = "";
 </script>
 
 <Card inverse color={cardColor} class="mb-4">
@@ -25,7 +24,7 @@
     <CardText>{cardSubtitle}</CardText>
   </CardBody>
   <CardFooter class="d-flex align-items-center justify-content-between">
-    <a class="small text-white stretched-link" href="charts">
+    <a class="small text-white stretched-link" href={path}>
       {cardFooterText}
     </a>
     <div class="small text-white"><i class="fas fa-angle-right" /></div>

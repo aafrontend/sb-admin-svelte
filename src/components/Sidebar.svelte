@@ -15,8 +15,8 @@
   let isAuthenticationOpen = false;
   let isErrorOpen = false;
   let activeLink = "Dashboard";
-  let footerName = "SB Admin Svelte";
-  let footerText = "Logged in as:";
+  let footerName = "";
+  let footerText = "";
 
   const updateActiveLink = (linkName) => (activeLink = linkName);
 
@@ -141,6 +141,7 @@
         >
           <i class="fas fa-download" slot="leftIcon" />
         </SidebarItem>
+        <!--
         <SidebarItem
           class={segment === "adminusers" ? "active" : ""}
           on:press={() => {
@@ -152,7 +153,7 @@
         >
           <i class="fas fa-user" slot="leftIcon" />
         </SidebarItem>
-
+        
         <div class="sb-sidenav-menu-heading">Settings</div>
         <SidebarItem
           on:press={toggleSetting}
@@ -178,6 +179,7 @@
               href="settings/notificationsettings"
               text="Notification Settings"
             />
+            
             <SidebarItem
               on:press={() => {
                 theme = "dark";
@@ -201,10 +203,13 @@
               href="settings/termsandconditions"
               text="Terms and Conditions"
             />
+            
           </Nav>
         </Collapse>
+      -->
       </Nav>
     </div>
+
     <div class="sb-sidenav-footer">
       <div class="small">{footerText}</div>
       {footerName}

@@ -9,6 +9,37 @@
   import Input from "sveltestrap/src/Input.svelte";
   import CustomInput from "sveltestrap/src/CustomInput.svelte";
   import Button from "sveltestrap/src/Button.svelte";
+  import { goto } from "@sapper/app";
+
+  //init account
+
+  /*
+  let userObject = null;
+  const userbase = window.userbase;
+  const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
+  let authPromise = userbase
+    .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
+    .then(({ user }) => (userObject = user));
+
+  const signIn = () => {
+    authPromise = userbase
+      .signIn({ username, password })
+      .then((user) => (userObject = user));
+    let redirect = async () => {
+      if (userObject != null) {
+        goto("../../");
+      } else {
+        alert("Invalid username or password");
+      }
+    };
+    setTimeout(redirect, 6000);
+  };
+
+  const signOut = () =>
+    (authPromise = userbase.signOut().then(() => (userObject = null)));
+  */
+
+  let username, password;
 </script>
 
 <div class="col-lg-5">
@@ -19,13 +50,15 @@
     <CardBody>
       <Form>
         <FormGroup>
-          <Label for="exampleEmail" class="small mb-1">Email</Label>
+          <Label for="exampleEmail" class="small mb-1">Username</Label>
           <Input
             class="py-4"
-            type="email"
-            name="email"
+            type="text"
+            name="username"
             id="exampleEmail"
-            placeholder="Enter email address" />
+            bind:value={username}
+            placeholder="Enter email address"
+          />
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword" class="small mb-1">Password</Label>
@@ -34,16 +67,13 @@
             type="password"
             name="password"
             id="examplePassword"
-            placeholder="Enter password" />
-        </FormGroup>
-        <FormGroup>
-          <CustomInput
-            type="checkbox"
-            id="exampleCustomCheckbox"
-            label="Remember password" />
+            bind:value={password}
+            placeholder="Enter password"
+          />
         </FormGroup>
         <FormGroup
-          class="d-flex align-items-center justify-content-between mt-4 mb-0">
+          class="d-flex align-items-center justify-content-between mt-4 mb-0"
+        >
           <Button color="primary" href=".">Login</Button>
         </FormGroup>
       </Form>

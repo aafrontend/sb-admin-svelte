@@ -135,7 +135,6 @@
           <td>{row.c_id}</td>
           <td>{row.category}</td>
           <td>{row.pictureurl}</td>
-          <td>{row.description}</td>
 
           <td>
             <Button on:click={() => clickHandler(row)} size="sm" color="info"

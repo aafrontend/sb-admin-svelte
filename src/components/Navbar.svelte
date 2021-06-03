@@ -20,7 +20,19 @@
   import Button from "sveltestrap/src/Button.svelte";
 
   export let color;
+  /*
+  let userObject = null;
+  const userbase = window.userbase;
+  const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
+  let authPromise = userbase
+    .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
+    .then(({ user }) => (userObject = user));
 
+  let username, password;
+
+  const signOut = () =>
+    (authPromise = userbase.signOut().then(() => (userObject = null)));
+*/
   function searchHandle() {
     event.preventDefault();
   }

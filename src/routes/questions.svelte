@@ -12,6 +12,9 @@
 
   import Questiontable from "../components/Questiontable.svelte";
   import { onMount } from "svelte";
+  import initDt from "datatables.net-dt";
+
+  initDt();
 
   let categories = [];
   var csv;

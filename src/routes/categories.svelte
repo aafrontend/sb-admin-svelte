@@ -10,31 +10,15 @@
   import Button from "sveltestrap/src/Button.svelte";
 
   import Categorytable from "../components/Categorytable.svelte";
+  import initDt from "datatables.net-dt";
+
+  initDt();
 
   let categoryInput = "";
   let pictureurl = "";
   let descriptionInput = "";
 
   async function newCategory() {
-    let data1 = {
-      category: categoryInput,
-      pictureurl: pictureurl,
-    };
-    console.log(JSON.stringify(data1));
-    if (categoryInput == "" || pictureurl == "" || descriptionInput == "") {
-      alert("Please fill in the fields");
-    } else {
-      await fetch(`http://localhost:5000/api/quiz/categories`, {
-        method: "POST",
-        body: JSON.stringify(data1),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
-  }
-
-  async function newCategory2() {
     let data2 = {
       category: categoryInput,
       pictureurl: pictureurl,
@@ -109,7 +93,7 @@
     <FormGroup
       class="d-flex align-items-center justify-content-between mt-4 mb-0"
     >
-      <Button block color="primary" on:click={newCategory2}>Add New</Button>
+      <Button block color="primary" on:click={newCategory}>Add New</Button>
     </FormGroup>
   </CardBody>
 </Card>
