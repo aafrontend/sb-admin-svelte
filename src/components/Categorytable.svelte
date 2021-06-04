@@ -84,13 +84,16 @@
     if (category == "" || pictureurl == "" || description == "") {
       alert("Please fill in the fields");
     } else {
-      fetch(`http://localhost:5000/api/quiz/categories`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((resp) => resp.json());
+      fetch(
+        `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/categories`,
+        {
+          method: "PUT",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then((resp) => resp.json());
       alert("Changes saved successfully!");
       toggle();
       location.reload();
@@ -102,13 +105,16 @@
       category: category,
     };
     console.log(JSON.stringify(data));
-    fetch(`http://localhost:5000/api/quiz/categories`, {
-      method: "DELETE",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((resp) => resp.json());
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/categories`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((resp) => resp.json());
     alert("Category deleted successfully!");
     toggleDel();
     location.reload();

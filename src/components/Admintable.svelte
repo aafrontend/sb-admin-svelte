@@ -20,7 +20,8 @@
 <svelte:head>
   <link
     rel="stylesheet"
-    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+  />
 </svelte:head>
 
 <table bind:this={el} class="display" style="width:100%">
@@ -30,7 +31,6 @@
       <th>Role</th>
       <th>Created</th>
       <th>Action</th>
-      
     </tr>
   </thead>
   <tbody>
@@ -40,7 +40,7 @@
           <td>{row.username}</td>
           <td>{row.role}</td>
           <td>{row.created}</td>
-          
+
           <td>
             <Button size="sm" color="info">{row.action}</Button>
             <Button size="sm" color="danger">delete</Button>

@@ -61,13 +61,16 @@
       user_email: email,
     };
     console.log(JSON.stringify(data));
-    fetch(`http://localhost:5000/api/user/users`, {
-      method: "DELETE",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((resp) => resp.json());
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/user/users`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((resp) => resp.json());
     alert("User Deleted successfully!");
     toggle();
     location.reload();

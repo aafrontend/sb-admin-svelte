@@ -98,13 +98,16 @@
     ) {
       alert("Please fill in the fields");
     } else {
-      fetch(`http://localhost:5000/api/quiz/questions/add`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      fetch(
+        `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/questions/add`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       alert("Question added!");
       remountTable();
     }

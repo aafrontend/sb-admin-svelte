@@ -47,13 +47,16 @@
       fb_id: id,
     };
     console.log(JSON.stringify(data));
-    fetch(`http://localhost:5000/api/feedback/feedback`, {
-      method: "DELETE",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((resp) => resp.json());
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/feedback/feedback`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((resp) => resp.json());
     alert("Report deleted successfully!");
     toggle();
     location.reload();

@@ -171,9 +171,12 @@
 
     console.log(JSON.stringify(data));
 
-    fetch(`http://localhost:5000/api/quiz/questions/${id}`, {
-      method: "DELETE",
-    }).then((resp) => resp.json());
+    fetch(
+      `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/questions/${id}`,
+      {
+        method: "DELETE",
+      }
+    ).then((resp) => resp.json());
     alert("Question deleted successfully!");
     toggleDel();
     location.reload();

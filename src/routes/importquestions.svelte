@@ -56,13 +56,16 @@
       if (text == "") {
         alert("Please Upload a file");
       } else {
-        fetch(`http://localhost:5000/api/quiz/questions/csv`, {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        fetch(
+          `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/questions/csv`,
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
           .then((resp) => resp.json())
           .then((data) => console.log(data));
         alert("Questions added!");

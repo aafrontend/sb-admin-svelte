@@ -67,13 +67,16 @@
     if (categoryInput == "" || pictureurl == "" || descriptionInput == "") {
       alert("Please fill in the fields");
     } else {
-      await fetch(`http://localhost:5000/api/quiz/categories`, {
-        method: "POST",
-        body: JSON.stringify(data1),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/categories`,
+        {
+          method: "POST",
+          body: JSON.stringify(data1),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     }
   }
 
@@ -88,13 +91,16 @@
     if (categoryInput == "" || pictureurl == "" || descriptionInput == "") {
       alert("Please fill in the fields");
     } else {
-      await fetch(`http://localhost:5000/api/quiz/categories`, {
-        method: "PUT",
-        body: JSON.stringify(data2),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/quiz/categories`,
+        {
+          method: "PUT",
+          body: JSON.stringify(data2),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       alert("Category added!");
       remountTable();
     }
