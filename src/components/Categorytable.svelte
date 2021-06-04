@@ -12,6 +12,7 @@
   import FormGroup from "sveltestrap/src/FormGroup.svelte";
   import Label from "sveltestrap/src/Label.svelte";
   import Input from "sveltestrap/src/Input.svelte";
+  import { goto } from "@sapper/app";
 
   let el; // table element
   let table; // table object (API)
@@ -92,6 +93,7 @@
       }).then((resp) => resp.json());
       alert("Changes saved successfully!");
       toggle();
+      location.reload();
     }
   }
 
@@ -109,6 +111,7 @@
     }).then((resp) => resp.json());
     alert("Category deleted successfully!");
     toggleDel();
+    location.reload();
   }
 </script>
 

@@ -12,6 +12,7 @@
   import FormGroup from "sveltestrap/src/FormGroup.svelte";
   import Label from "sveltestrap/src/Label.svelte";
   import Input from "sveltestrap/src/Input.svelte";
+  import { goto } from "@sapper/app";
 
   let id;
   let name;
@@ -69,6 +70,7 @@
     }).then((resp) => resp.json());
     alert("User Deleted successfully!");
     toggle();
+    location.reload();
   }
 </script>
 

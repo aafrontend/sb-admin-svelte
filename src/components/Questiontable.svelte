@@ -147,6 +147,7 @@
       }).then((resp) => resp.json());
       alert("Changes saved successfully!");
       toggle();
+      location.reload();
     }
   }
 
@@ -175,6 +176,7 @@
     }).then((resp) => resp.json());
     alert("Question deleted successfully!");
     toggleDel();
+    location.reload();
   }
 </script>
 

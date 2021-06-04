@@ -56,6 +56,7 @@
     }).then((resp) => resp.json());
     alert("Report deleted successfully!");
     toggle();
+    location.reload();
   }
 </script>
 
