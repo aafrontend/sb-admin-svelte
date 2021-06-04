@@ -1,12 +1,9 @@
 <script>
   import Container from "sveltestrap/src/Container.svelte";
-  import Row from "sveltestrap/src/Row.svelte";
   import Navbar from "../components/Navbar.svelte";
   import Sidebar from "../components/Sidebar.svelte";
   import Footer from "../components/Footer.svelte";
-
   export let segment;
-
   let theme = "dark";
   let color = "dark";
   let title = "SB Admin Svelte";
@@ -16,22 +13,6 @@
   <title>{title}</title>
 </svelte:head>
 
-<!--
-{#if account !== "admin"}
-  <div id="layoutAuthentication" class="bg-primary">
-    <div id="layoutAuthentication_content">
-      <main>
-        <Container>
-          <Row class="justify-content-center">
-            <slot />
-          </Row>
-        </Container>
-      </main>
-    </div>
-    <Footer />
-  </div>
-{:else if}
--->
 {#if segment !== "pages"}
   <div class="sb-nav-fixed">
     <Navbar {segment} {color} {title} />

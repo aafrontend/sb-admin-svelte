@@ -126,22 +126,22 @@
 
     <FormGroup>
       <Label for="a" class="small mb-1">A</Label>
-      <Input type="text" name="text" bind:value={opta} />
+      <Input type="text" name="a" bind:value={opta} />
     </FormGroup>
 
     <FormGroup>
       <Label for="b" class="small mb-1">B</Label>
-      <Input type="text" name="text" bind:value={optb} />
+      <Input type="text" name="b" bind:value={optb} />
     </FormGroup>
 
     <FormGroup>
       <Label for="c" class="small mb-1">C</Label>
-      <Input type="text" name="text" bind:value={optc} />
+      <Input type="text" name="c" bind:value={optc} />
     </FormGroup>
 
     <FormGroup>
       <Label for="d" class="small mb-1">D</Label>
-      <Input type="text" name="text" bind:value={optd} />
+      <Input type="text" name="d" bind:value={optd} />
     </FormGroup>
 
     <FormGroup>
@@ -157,7 +157,7 @@
 
     <FormGroup>
       <Label for="level" class="small mb-1">Level</Label>
-      <Input type="text" name="text" bind:value={level} />
+      <Input type="text" name="level" bind:value={level} />
     </FormGroup>
 
     <hr />

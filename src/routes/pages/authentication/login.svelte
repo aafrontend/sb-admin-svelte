@@ -10,36 +10,72 @@
   import CustomInput from "sveltestrap/src/CustomInput.svelte";
   import Button from "sveltestrap/src/Button.svelte";
   import { goto } from "@sapper/app";
+  import { onMount } from "svelte";
+  import ModalBody from "sveltestrap/src/ModalBody.svelte";
+  import ModalFooter from "sveltestrap/src/ModalFooter.svelte";
+  import ModalHeader from "sveltestrap/src/ModalHeader.svelte";
+  import Modal from "sveltestrap/src/Modal.svelte";
+  import { userInfo } from "../../../userStore.js";
 
   //init account
 
-  /*
-  let userObject = null;
-  const userbase = window.userbase;
-  const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
-  let authPromise = userbase
-    .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
-    .then(({ user }) => (userObject = user));
+  let open = false;
+  let fullscreen = "xl";
 
-  const signIn = () => {
+  let authPromise;
+  let userbase;
+
+  let userObject = null;
+  const unsubscribe = userInfo.subscribe((value) => {
+    userObject = value;
+  });
+
+  let username = "admin";
+  let password = "admin123";
+  onMount(() => {
+    userbase = window.userbase;
     authPromise = userbase
-      .signIn({ username, password })
-      .then((user) => (userObject = user));
-    let redirect = async () => {
-      if (userObject != null) {
-        goto("../../");
-      } else {
-        alert("Invalid username or password");
-      }
+      .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
+      .then(({ user }) => userInfo.set(user));
+    //signIn();
+  });
+
+  function signIn() {
+    userbase.signIn({ username, password }).then((user) => {
+      userInfo.set(user);
+    });
+    let transition = () => {
+      goto("/");
     };
-    setTimeout(redirect, 6000);
+    for (let x = 0; x < 1000; x++) {
+      if (x == 99) {
+        transition();
+      }
+    }
+  }
+
+  const signUp = () => {
+    userbase.signUp({ username, password });
+    console.log("Signing up...");
   };
 
-  const signOut = () =>
-    (authPromise = userbase.signOut().then(() => (userObject = null)));
-  */
+  function signInHandler() {
+    if (
+      username === null ||
+      username.match(/^ *$/) !== null ||
+      password === null ||
+      password.match(/^ *$/) !== null
+    ) {
+      alert("Please fill in username/password!");
+    } else if (username !== "admin" || password !== "admin123") {
+      alert("Invalid Username or Password");
+    } else {
+      signIn();
+      open = true;
 
-  let username, password;
+      console.log("Signing in!");
+    }
+  }
 </script>
 
 <div class="col-lg-5">
@@ -57,7 +93,7 @@
             name="username"
             id="exampleEmail"
             bind:value={username}
-            placeholder="Enter email address"
+            placeholder="Enter your username"
           />
         </FormGroup>
         <FormGroup>
@@ -74,7 +110,9 @@
         <FormGroup
           class="d-flex align-items-center justify-content-between mt-4 mb-0"
         >
-          <Button color="primary" href=".">Login</Button>
+          <button color="primary" on:click|preventDefault={signInHandler}
+            >Login</button
+          >
         </FormGroup>
       </Form>
     </CardBody>
@@ -88,3 +126,8 @@
     -->
   </Card>
 </div>
+
+<Modal isOpen={open} {fullscreen}>
+  <ModalHeader>Authenticating</ModalHeader>
+  <ModalBody>Please wait...</ModalBody>
+</Modal>

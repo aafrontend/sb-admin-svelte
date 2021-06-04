@@ -18,8 +18,11 @@
   import Input from "sveltestrap/src/Input.svelte";
   import CustomInput from "sveltestrap/src/CustomInput.svelte";
   import Button from "sveltestrap/src/Button.svelte";
+  import { goto } from "@sapper/app";
+  import { userInfo } from "../userStore.js";
 
   export let color;
+
   /*
   let userObject = null;
   const userbase = window.userbase;
@@ -32,9 +35,22 @@
 
   const signOut = () =>
     (authPromise = userbase.signOut().then(() => (userObject = null)));
-*/
+
+    */
+
+  const userbase = window.userbase;
+
+  const signOut = () => userbase.signOut();
+
   function searchHandle() {
     event.preventDefault();
+  }
+
+  function signOutHandler() {
+    signOut();
+    userInfo.set(null);
+
+    goto("./pages/authentication/login");
   }
 </script>
 
@@ -62,20 +78,22 @@
         <DropdownToggle nav caret>
           <i class="fas fa-user fa-fw ml-3" />
         </DropdownToggle>
+
         <DropdownMenu right>
+          <!-- 
           <DropdownItem>
             <a class="dropdown-item" href="changepassword">Change Password</a>
           </DropdownItem>
-          <!--
+          
           <DropdownItem>
             <a class="dropdown-item" href="activity_log">Activity Log</a>
           </DropdownItem>
         -->
           <DropdownItem divider />
           <DropdownItem>
-            <a class="dropdown-item" href="pages/authentication/login">
-              Logout
-            </a>
+            <Button class="dropdown-item" on:click={signOutHandler}
+              >Logout</Button
+            >
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>

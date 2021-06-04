@@ -18,42 +18,75 @@
   import { onMount } from "svelte";
   import initDt from "datatables.net-dt";
   import { goto } from "@sapper/app";
+  import ModalBody from "sveltestrap/src/ModalBody.svelte";
+  import ModalFooter from "sveltestrap/src/ModalFooter.svelte";
+  import ModalHeader from "sveltestrap/src/ModalHeader.svelte";
+  import Modal from "sveltestrap/src/Modal.svelte";
+  import { userInfo } from "../userStore.js";
 
   initDt();
 
   //init account
-  /*
+
+  let open = false;
+  let fullscreen = "xl";
+
   let userObject = null;
+  const unsubscribe = userInfo.subscribe((value) => {
+    userObject = value;
+  });
   const userbase = window.userbase;
+
   const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
   let authPromise = userbase
     .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
-    .then(({ user }) => (userObject = user));
+    .then(({ user }) => userInfo.set(user));
+
+  const signIn = () => {
+    authPromise = userbase.signIn({ username, password }).then((user) => {
+      userInfo.set(user);
+    });
+    /*
+    let redirect = async () => {
+      if (userObject != null) {
+        goto("../../");
+      } else {
+        alert("Invalid username or password");
+      }
+    };setTimeout(redirect, 6000);
+    */
+  };
+
+  const signOut = () =>
+    (authPromise = userbase.signOut().then(() => userInfo.set(null)));
 
   let username, password;
-  */
-
   let title = "SB Admin Svelte";
 
-  // Test scripts:
   let totalCategories;
-  //let totalSubCategories;
   let totalQuestions;
   let totalUsers;
 
   // load data
   onMount(() => {
-    /*
-    authPromise;
-    let redirect = async () => {
-      if (userObject == null) {
-        console.log(userObject);
-        goto("./pages/authentication/login");
-      }
-    };
-    setTimeout(redirect, 5000);
-    */
+    open = true;
 
+    if (userObject !== null) {
+      authPromise;
+      console.log("there are no data");
+      let redirect = async () => {
+        if (userInfo === null) {
+          goto("/pages/authentication/login");
+        } else {
+          open = false;
+          console.log(userObject);
+        }
+      };
+      setTimeout(redirect, 3000);
+    } else {
+      console.log("there are data");
+      open = false;
+    }
     fetch(
       `http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:5000/api/user/users`,
       {
@@ -87,104 +120,46 @@
   <title>{title}</title>
 </svelte:head>
 
-<!--
 {#await authPromise}
   Loading...
 {:then _}
--->
-<h3 class="mt-4">Dashboard</h3>
-<Breadcrumb class="mb-4">
-  <BreadcrumbItem active>Dashboard</BreadcrumbItem>
-</Breadcrumb>
-<Row>
-  <div class="col-xl-3 col-md-6">
-    <DashboardCard
-      cardTitle="Total Categories"
-      cardSubtitle={totalCategories}
-      cardColor="dark"
-      path="categories"
-    />
-  </div>
-
-  <div class="col-xl-3 col-md-6">
-    <DashboardCard
-      cardTitle="Total Questions"
-      cardSubtitle={totalQuestions}
-      cardColor="dark"
-      path="questions"
-    />
-  </div>
-  <div class="col-xl-3 col-md-6">
-    <DashboardCard
-      cardTitle="Total Users"
-      cardSubtitle={totalUsers}
-      cardColor="dark"
-      path="users"
-    />
-  </div>
-</Row>
-<!--
-    
+  <h3 class="mt-4">Dashboard</h3>
+  <Breadcrumb class="mb-4">
+    <BreadcrumbItem active>Dashboard</BreadcrumbItem>
+  </Breadcrumb>
   <Row>
-    <div class="col-xl-6">
-      <CustomCard cardTitle="Monthly Leaderboard" cardIcon="fas fa-chart-bar">
-        <BarChart />
-      </CustomCard>
+    <div class="col-xl-3 col-md-6">
+      <DashboardCard
+        cardTitle="Total Categories"
+        cardSubtitle={totalCategories}
+        cardColor="dark"
+        path="categories"
+      />
     </div>
 
-    <div class="col-xl-6">
-      <CustomCard cardTitle="Monthly Registration" cardIcon="fas fa-chart-area">
-        <AreaChart />
-      </CustomCard>
+    <div class="col-xl-3 col-md-6">
+      <DashboardCard
+        cardTitle="Total Questions"
+        cardSubtitle={totalQuestions}
+        cardColor="dark"
+        path="questions"
+      />
+    </div>
+    <div class="col-xl-3 col-md-6">
+      <DashboardCard
+        cardTitle="Total Users"
+        cardSubtitle={totalUsers}
+        cardColor="dark"
+        path="users"
+      />
     </div>
   </Row>
--->
-<CustomCard cardTitle="Registered Users" cardIcon="fas fa-table">
-  <Userstable />
-</CustomCard>
-
-<!--
-{:else}
-  <div class="col-lg-5">
-    <Card class="shadow-lg border-0 rounded-lg mt-5">
-      <CardHeader>
-        <h3 class="text-center font-weight-light my-4">Login</h3>
-      </CardHeader>
-      <CardBody>
-        <Form>
-          <FormGroup>
-            <Label for="exampleEmail" class="small mb-1">Username</Label>
-            <Input
-              class="py-4"
-              type="text"
-              name="text"
-              id="exampleEmail"
-              placeholder="Enter username"
-              bind:value={username}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="examplePassword" class="small mb-1">Password</Label>
-            <Input
-              class="py-4"
-              type="password"
-              name="password"
-              id="examplePassword"
-              placeholder="Enter password"
-              bind:value={password}
-            />
-          </FormGroup>
-
-          <FormGroup
-            class="d-flex align-items-center justify-content-between mt-4 mb-0"
-          >
-            <Button color="primary" on:click={signIn}>Login</Button>
-          </FormGroup>
-        </Form>
-      </CardBody>
-    </Card>
-  </div>
-{/if}
-
+  <CustomCard cardTitle="Registered Users" cardIcon="fas fa-table">
+    <Userstable />
+  </CustomCard>
 {/await}
--->
+
+<Modal isOpen={open} {fullscreen}>
+  <ModalHeader>Authenticating</ModalHeader>
+  <ModalBody>Please wait...</ModalBody>
+</Modal>

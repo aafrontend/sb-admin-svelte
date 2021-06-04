@@ -6,10 +6,10 @@
   export let segment;
 </script>
 
-{#if segment === 'login'}
+{#if segment === "login"}
   <Login />
-{:else if segment === 'register'}
+{:else if segment === "register"}
   <Register />
-{:else if segment === 'forget_password'}
+{:else}
   <ForgetPassword />
 {/if}
