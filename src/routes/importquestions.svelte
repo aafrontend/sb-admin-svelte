@@ -8,6 +8,34 @@
   import Label from "sveltestrap/src/Label.svelte";
   import Input from "sveltestrap/src/Input.svelte";
   import Button from "sveltestrap/src/Button.svelte";
+  import { userInfo } from "../userStore.js";
+  import { onMount } from "svelte";
+
+  const userbase = window.userbase;
+  let userObject = null;
+  const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
+  let authPromise = userbase
+    .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
+    .then(({ user }) => userInfo.set(user));
+
+  onMount(() => {
+    if (userObject !== null) {
+      authPromise;
+      console.log("there are no data");
+      let redirect = async () => {
+        if (userInfo === null) {
+          goto("/pages/authentication/login");
+        } else {
+          open = false;
+          console.log(userObject);
+        }
+      };
+      setTimeout(redirect, 3000);
+    } else {
+      console.log("there are data");
+      open = false;
+    }
+  });
 
   //export let multiple = false;
 
@@ -70,16 +98,19 @@
   */
 </script>
 
-<h3 class="mt-4">Import Questions</h3>
-<Breadcrumb class="mb-4">
-  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
-  <BreadcrumbItem active>Import Questions</BreadcrumbItem>
-</Breadcrumb>
+{#await authPromise}
+  Loading...
+{:then _}
+  <h3 class="mt-4">Import Questions</h3>
+  <Breadcrumb class="mb-4">
+    <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+    <BreadcrumbItem active>Import Questions</BreadcrumbItem>
+  </Breadcrumb>
 
-<Card class="mb-4">
-  <CardHeader>CSV Question File</CardHeader>
-  <CardBody>
-    <!--
+  <Card class="mb-4">
+    <CardHeader>CSV Question File</CardHeader>
+    <CardBody>
+      <!--
     <div class="upload" class:dragging>
       <label
         on:drop|preventDefault={onFile(getFilesFromDropEvent)}
@@ -102,19 +133,20 @@
     </div>
     -->
 
-    <FormGroup>
-      <Input type="file" name="file" id="exampleFile" bind:files={csv} />
-    </FormGroup>
+      <FormGroup>
+        <Input type="file" name="file" id="exampleFile" bind:files={csv} />
+      </FormGroup>
 
-    <hr />
-    <Button
-      size="sm"
-      color="warning"
-      target="_blank"
-      href="https://drive.google.com/file/d/1QTO-lGNiq2LXz40AISJXcM5qVNBXsuni/view?usp=sharing"
-      >Download Sample File Here</Button
-    >
-    <hr />
-    <Button block color="primary" on:click={clickHandler}>Upload</Button>
-  </CardBody>
-</Card>
+      <hr />
+      <Button
+        size="sm"
+        color="warning"
+        target="_blank"
+        href="https://drive.google.com/file/d/1QTO-lGNiq2LXz40AISJXcM5qVNBXsuni/view?usp=sharing"
+        >Download Sample File Here</Button
+      >
+      <hr />
+      <Button block color="primary" on:click={clickHandler}>Upload</Button>
+    </CardBody>
+  </Card>
+{/await}

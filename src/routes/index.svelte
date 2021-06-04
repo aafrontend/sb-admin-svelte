@@ -46,15 +46,6 @@
     authPromise = userbase.signIn({ username, password }).then((user) => {
       userInfo.set(user);
     });
-    /*
-    let redirect = async () => {
-      if (userObject != null) {
-        goto("../../");
-      } else {
-        alert("Invalid username or password");
-      }
-    };setTimeout(redirect, 6000);
-    */
   };
 
   const signOut = () =>
@@ -82,7 +73,7 @@
           console.log(userObject);
         }
       };
-      setTimeout(redirect, 3000);
+      setTimeout(redirect, 200);
     } else {
       console.log("there are data");
       open = false;
