@@ -30,8 +30,8 @@
     userObject = value;
   });
 
-  let username = "admin";
-  let password = "admin123";
+  let username = "";
+  let password = "";
   onMount(() => {
     userbase = window.userbase;
     authPromise = userbase

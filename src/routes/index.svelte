@@ -63,7 +63,7 @@
     open = true;
 
     if (userObject !== null) {
-      authPromise;
+      //authPromise;
       console.log("there are no data");
       let redirect = async () => {
         if (userInfo === null) {
@@ -73,7 +73,7 @@
           console.log(userObject);
         }
       };
-      setTimeout(redirect, 200);
+      setTimeout(redirect, 2000);
     } else {
       console.log("there are data");
       open = false;
