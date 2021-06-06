@@ -31,7 +31,7 @@
   onMount(async () => {
     try {
       const response = await fetch(
-        "ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/user",
+        "http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/user",
         {
           headers: { "Content-Type": "application/json" },
           credentials: "include",

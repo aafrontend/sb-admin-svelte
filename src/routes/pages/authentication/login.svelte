@@ -20,7 +20,7 @@
     let resp;
     console.log({ username, password });
     await fetch(
-      "ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/login",
+      "http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/login",
       {
         method: "POST",
         headers: {

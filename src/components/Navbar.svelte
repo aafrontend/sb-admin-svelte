@@ -28,7 +28,7 @@
 
   const signOut = async () => {
     await fetch(
-      "ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/logout",
+      "http://ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/logout",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
