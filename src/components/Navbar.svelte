@@ -27,11 +27,14 @@
   userInfo.subscribe((a) => (auth = a));
 
   const signOut = async () => {
-    await fetch("http://localhost:8000/api/logout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    });
+    await fetch(
+      "ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/logout",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }
+    );
 
     await goto("./pages/authentication/login");
   };

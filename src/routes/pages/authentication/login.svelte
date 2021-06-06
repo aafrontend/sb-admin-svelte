@@ -19,17 +19,20 @@
   const signIn = async () => {
     let resp;
     console.log({ username, password });
-    await fetch("http://localhost:8000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        name: username,
-        password: password,
-      }),
-    })
+    await fetch(
+      "ec2-54-255-217-149.ap-southeast-1.compute.amazonaws.com:8000/api/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          name: username,
+          password: password,
+        }),
+      }
+    )
       .then((res) => (resp = res))
       .catch((e) => console.log(e));
 
