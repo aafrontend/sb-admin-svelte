@@ -4,42 +4,38 @@
   import Card from "sveltestrap/src/Card.svelte";
   import CardBody from "sveltestrap/src/CardBody.svelte";
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
-  import Form from "sveltestrap/src/Form.svelte";
   import FormGroup from "sveltestrap/src/FormGroup.svelte";
   import Label from "sveltestrap/src/Label.svelte";
   import Input from "sveltestrap/src/Input.svelte";
   import Button from "sveltestrap/src/Button.svelte";
   import { Collapse } from "sveltestrap";
-
+  import { goto } from "@sapper/app";
   import Userstable from "../components/Userstable.svelte";
   import initDt from "datatables.net-dt";
   import { userInfo } from "../userStore.js";
   import { onMount } from "svelte";
 
   initDt();
-  const userbase = window.userbase;
-  let userObject = null;
-  const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
-  let authPromise = userbase
-    .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
-    .then(({ user }) => userInfo.set(user));
+  let auth = false;
+  userInfo.subscribe((a) => (auth = a));
+  onMount(async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/user", {
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
 
-  onMount(() => {
-    if (userObject !== null) {
-      authPromise;
-      console.log("there are no data");
-      let redirect = async () => {
-        if (userInfo === null) {
-          goto("/pages/authentication/login");
-        } else {
-          open = false;
-          console.log(userObject);
-        }
-      };
-      setTimeout(redirect, 3000);
-    } else {
-      console.log("there are data");
-      open = false;
+      const content = await response;
+
+      if (content.status !== 200) {
+        goto("/pages/authentication/login");
+      }
+
+      //console.log(content);
+      userInfo.set(true);
+    } catch (err) {
+      userInfo.set(false);
+      goto("/pages/authentication/login");
     }
   });
 
@@ -47,88 +43,83 @@
   let isAttachedImage = false;
 </script>
 
-{#await authPromise}
-  Loading...
-{:then _}
-  <h3 class="mt-4">Send Notifications to User</h3>
-  <Breadcrumb class="mb-4">
-    <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
-    <BreadcrumbItem active>Send Notifications</BreadcrumbItem>
-  </Breadcrumb>
+<h3 class="mt-4">Send Notifications to User</h3>
+<Breadcrumb class="mb-4">
+  <BreadcrumbItem><a href=".">Dashboard</a></BreadcrumbItem>
+  <BreadcrumbItem active>Send Notifications</BreadcrumbItem>
+</Breadcrumb>
 
-  <Card class="mb-4">
-    <CardBody>
-      <FormGroup>
-        <Label for="exampleSelect" class="small mb-1">Select Users</Label>
-        <Input type="select" name="select" id="exampleSelect">
-          <option value="" selected disabled hidden>Select group to send</option
-          >
-          <option>Selected only</option>
-          <option>All</option>
-        </Input>
-      </FormGroup>
+<Card class="mb-4">
+  <CardBody>
+    <FormGroup>
+      <Label for="exampleSelect" class="small mb-1">Select Users</Label>
+      <Input type="select" name="select" id="exampleSelect">
+        <option value="" selected disabled hidden>Select group to send</option>
+        <option>Selected only</option>
+        <option>All</option>
+      </Input>
+    </FormGroup>
 
-      <FormGroup>
-        <Label for="exampleSelect" class="small mb-1">Type</Label>
-        <Input type="select" name="select" id="exampleSelect">
-          <option value="" selected disabled hidden>Select type</option>
-          <option>Default</option>
-          <option>Main Category</option>
-        </Input>
-      </FormGroup>
+    <FormGroup>
+      <Label for="exampleSelect" class="small mb-1">Type</Label>
+      <Input type="select" name="select" id="exampleSelect">
+        <option value="" selected disabled hidden>Select type</option>
+        <option>Default</option>
+        <option>Main Category</option>
+      </Input>
+    </FormGroup>
 
-      <FormGroup>
-        <Label for="exampleEmail" class="small mb-1">Title</Label>
-        <Input type="text" name="text" />
-      </FormGroup>
+    <FormGroup>
+      <Label for="exampleEmail" class="small mb-1">Title</Label>
+      <Input type="text" name="text" />
+    </FormGroup>
 
-      <FormGroup>
-        <Label for="exampleText" class="small mb-1">Message</Label>
-        <Input type="textarea" name="text" id="exampleText" />
-      </FormGroup>
+    <FormGroup>
+      <Label for="exampleText" class="small mb-1">Message</Label>
+      <Input type="textarea" name="text" id="exampleText" />
+    </FormGroup>
 
-      <FormGroup check>
-        <Label check>
-          <Input type="checkbox" bind:checked={isAttachedImage} />
-          Include Image
-        </Label>
-      </FormGroup>
+    <FormGroup check>
+      <Label check>
+        <Input type="checkbox" bind:checked={isAttachedImage} />
+        Include Image
+      </Label>
+    </FormGroup>
 
-      <Collapse isOpen={isAttachedImage}>
-        <Input type="file" name="file" id="exampleFile" />
-      </Collapse>
+    <Collapse isOpen={isAttachedImage}>
+      <Input type="file" name="file" id="exampleFile" />
+    </Collapse>
 
-      <hr />
+    <hr />
 
-      <Button block color="primary">Send Notification</Button>
-    </CardBody>
-  </Card>
+    <Button block color="primary">Send Notification</Button>
+  </CardBody>
+</Card>
 
-  <Card class="mb-4">
-    <CardHeader>
-      <svg
-        class="svg-inline--fa fa-table fa-w-16"
-        aria-hidden="true"
-        focusable="false"
-        data-prefix="fas"
-        data-icon="table"
-        role="img"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        data-fa-i2svg=""
-      >
-        <path
-          fill="currentColor"
-          d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51
+<Card class="mb-4">
+  <CardHeader>
+    <svg
+      class="svg-inline--fa fa-table fa-w-16"
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fas"
+      data-icon="table"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      data-fa-i2svg=""
+    >
+      <path
+        fill="currentColor"
+        d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51
         0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224
         416H64v-96h160v96zm0-160H64v-96h160v96zm224
         160H288v-96h160v96zm0-160H288v-96h160v96z"
-        />
-      </svg>
-      Users
-    </CardHeader>
-    <CardBody>
-      <Userstable />
-    </CardBody>
-  </Card>
-{/await}
+      />
+    </svg>
+    Users
+  </CardHeader>
+  <CardBody>
+    <Userstable />
+  </CardBody>
+</Card>

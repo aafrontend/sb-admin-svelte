@@ -5,9 +5,6 @@
   import CardHeader from "sveltestrap/src/CardHeader.svelte";
   import CardText from "sveltestrap/src/CardText.svelte";
   import CardTitle from "sveltestrap/src/CardTitle.svelte";
-  import CardSubtitle from "sveltestrap/src/CardSubtitle.svelte";
-  import Table from "sveltestrap/src/Table.svelte";
-  import Row from "sveltestrap/src/Row.svelte";
 
   export let cardTitle = "";
   export let cardColor;

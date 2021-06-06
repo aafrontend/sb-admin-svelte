@@ -22,57 +22,28 @@
   import { userInfo } from "../userStore.js";
 
   export let color;
+  let auth = false;
 
-  /*
-  let userObject = null;
-  const userbase = window.userbase;
-  const appId = "4f0d866e-882d-4f53-88ee-2c3082abb3ff";
-  let authPromise = userbase
-    .init({ appId: "4f0d866e-882d-4f53-88ee-2c3082abb3ff" })
-    .then(({ user }) => (userObject = user));
+  userInfo.subscribe((a) => (auth = a));
 
-  let username, password;
+  const signOut = async () => {
+    await fetch("http://localhost:8000/api/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
 
-  const signOut = () =>
-    (authPromise = userbase.signOut().then(() => (userObject = null)));
-
-    */
-
-  const userbase = window.userbase;
-
-  const signOut = () => userbase.signOut();
-
-  function searchHandle() {
-    event.preventDefault();
-  }
+    await goto("./pages/authentication/login");
+  };
 
   function signOutHandler() {
     signOut();
-    userInfo.set(null);
-
-    goto("./pages/authentication/login");
   }
 </script>
 
 <Navbar class="sb-topnav navbar-expand" {color} dark expand="md">
   <NavbarBrand href=".">Admin</NavbarBrand>
   <Nav class="ml-auto" navbar>
-    <!--
-    <Form inline>
-      <InputGroup>
-        <Input
-          type="search"
-          name="search"
-          id="exampleSearch"
-          placeholder="Search for..." />
-        <InputGroupAddon addonType={'append'}>
-          <Button color="primary" on:click={searchHandle}>
-            <i class="fas fa-search" />
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
-    </Form>
-  -->
     <ListGroup class="ml-auto ml-md-0">
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
@@ -80,15 +51,6 @@
         </DropdownToggle>
 
         <DropdownMenu right>
-          <!-- 
-          <DropdownItem>
-            <a class="dropdown-item" href="changepassword">Change Password</a>
-          </DropdownItem>
-          
-          <DropdownItem>
-            <a class="dropdown-item" href="activity_log">Activity Log</a>
-          </DropdownItem>
-        -->
           <DropdownItem divider />
           <DropdownItem>
             <Button class="dropdown-item" on:click={signOutHandler}

@@ -1,5 +1,4 @@
 <script>
-  import Table from "sveltestrap/src/Table.svelte";
   import { Button } from "sveltestrap";
   import jQuery from "jquery";
   import { onMount, tick } from "svelte";

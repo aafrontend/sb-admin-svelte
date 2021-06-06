@@ -1,5 +1,4 @@
 <script>
-  import Table from "sveltestrap/src/Table.svelte";
   import { Button } from "sveltestrap";
   import jQuery from "jquery";
   import { onMount, tick } from "svelte";
@@ -12,7 +11,6 @@
   import FormGroup from "sveltestrap/src/FormGroup.svelte";
   import Label from "sveltestrap/src/Label.svelte";
   import Input from "sveltestrap/src/Input.svelte";
-  import { goto } from "@sapper/app";
 
   let id;
   let name;
