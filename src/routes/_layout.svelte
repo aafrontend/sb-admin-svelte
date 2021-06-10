@@ -32,7 +32,5 @@
     </div>
   </div>
 {:else}
-  <body>
     <slot />
-  </body>
 {/if}
